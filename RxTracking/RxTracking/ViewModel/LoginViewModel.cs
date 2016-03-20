@@ -1,4 +1,9 @@
-﻿namespace RxTracking.ViewModel
+﻿using System;
+using GalaSoft.MvvmLight.Messaging;
+using MahApps.Metro.Controls;
+using Microsoft.Practices.ServiceLocation;
+
+namespace RxTracking.ViewModel
 {
     using System.Windows;
     using GalaSoft.MvvmLight;
@@ -58,6 +63,7 @@
                 var msg = Properties.Settings.Default._LoginSuccessMsg + USER;
                 MessageBox.Show(msg, Properties.Settings.Default._appName, MessageBoxButton.OK);
                 // LAUNCH THE APP -- 
+                Messenger.Default.Send(new NotificationMessage("Open OrderView"));
                 return;
                 // CHANGE THE RETURN TO THE VIEWMODEL of the Order Class once this is committed to github
             }
@@ -71,7 +77,8 @@
         private void Contact()
         {
             // Remove the following line after I have merged this since this will be the next thing I am working on
-            MessageBox.Show("Launching Contact Form");
+            Messenger.Default.Send(new NotificationMessage("Open ContactView"));
+
         }
 
         #region Public Properties
