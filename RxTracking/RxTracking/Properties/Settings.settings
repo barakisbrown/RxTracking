@@ -3,10 +3,25 @@
   <Profiles />
   <Settings>
     <Setting Name="_dbUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">mongodb:\\localhost:27017</Value>
+      <Value Profile="(Default)">mongodb://localhost:27017</Value>
     </Setting>
     <Setting Name="_dbName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">RxStore</Value>
+    </Setting>
+    <Setting Name="_loginCollectionName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Logins</Value>
+    </Setting>
+    <Setting Name="_LoginSuccessMsg" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Welcome to RxTracking</Value>
+    </Setting>
+    <Setting Name="_LoginErrorMsg" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Please check your creditentials. If new user, please click NEW USER.</Value>
+    </Setting>
+    <Setting Name="_appName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RxTracking</Value>
+    </Setting>
+    <Setting Name="_LoginViewHeaderMsg" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Welcome to Rx Tracking. Pleae enter your credentials or Click New User</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -25,7 +25,7 @@ namespace RxTracking.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mongodb:\\\\localhost:27017")]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://localhost:27017")]
         public string _dbUrl {
             get {
                 return ((string)(this["_dbUrl"]));
@@ -38,6 +38,51 @@ namespace RxTracking.Properties {
         public string _dbName {
             get {
                 return ((string)(this["_dbName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Logins")]
+        public string _loginCollectionName {
+            get {
+                return ((string)(this["_loginCollectionName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Welcome to RxTracking")]
+        public string _LoginSuccessMsg {
+            get {
+                return ((string)(this["_LoginSuccessMsg"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Please check your creditentials. If new user, please click NEW USER.")]
+        public string _LoginErrorMsg {
+            get {
+                return ((string)(this["_LoginErrorMsg"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RxTracking")]
+        public string _appName {
+            get {
+                return ((string)(this["_appName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Welcome to Rx Tracking. Pleae enter your credentials or Click New User")]
+        public string _LoginViewHeaderMsg {
+            get {
+                return ((string)(this["_LoginViewHeaderMsg"]));
             }
         }
     }
