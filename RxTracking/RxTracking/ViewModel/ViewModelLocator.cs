@@ -36,6 +36,7 @@ namespace RxTracking.ViewModel
             else
             {
                 SimpleIoc.Default.Register<IDataService, DataService>();
+                SimpleIoc.Default.Register<ILoginService, LoginService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
