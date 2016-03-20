@@ -93,6 +93,14 @@
             get { return _logins.Password; }
             set { _logins.Password = value; }
         }
+
+        // Header Msg Public Property
+        public const string LoginHeaderMsg = "HEADER";
+
+        public string HeaderMsg
+        {
+            get { return Properties.Settings.Default._LoginViewHeaderMsg; }            
+        }
         #endregion
     }
 }

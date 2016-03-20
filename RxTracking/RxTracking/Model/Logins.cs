@@ -19,6 +19,11 @@ namespace RxTracking.Model
         private string _password;
 
         #endregion
+        public Logins()
+        {
+            UserName = "";
+            Password = "";
+        }
         #region Public Properties
         // CONST PROPERTY NAMES FOR EACH OF MY PROPERTIES
         public const string IdProperyName = "ID";
