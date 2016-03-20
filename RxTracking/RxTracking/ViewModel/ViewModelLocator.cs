@@ -41,6 +41,7 @@ namespace RxTracking.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<ContactViewModel>();
         }
 
         /// <summary>
@@ -66,6 +67,10 @@ namespace RxTracking.ViewModel
             }
         }
 
+        public ContactViewModel Contacts
+        {
+            get { return ServiceLocator.Current.GetInstance<ContactViewModel>(); }
+        }
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>
