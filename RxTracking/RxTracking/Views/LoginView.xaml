@@ -24,7 +24,7 @@
         </StackPanel>
 
         <Border BorderBrush="Black" BorderThickness="1">
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="" Margin="-1,-1,1,-1"
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="{Binding HeaderMsg}" Margin="-1,-1,1,-1"
                        HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
         </Border>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="122,69.034,0,72.803" Grid.Row="1" Text="{Binding USER}" Width="120" 
