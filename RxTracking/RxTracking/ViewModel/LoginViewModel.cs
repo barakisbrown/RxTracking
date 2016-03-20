@@ -15,16 +15,7 @@ namespace RxTracking.ViewModel
         /// </summary>
         public LoginViewModel()
         {
-            TEMP = "HELLO WORLD";
-        }
-
-        private string _temp;
-        public const string tempPropertyString = "TEMP";
-
-        public string TEMP
-        {
-            get { return _temp; }
-            set { Set(tempPropertyString, ref _temp, value); }
-        }
+            
+        }     
     }
 }
