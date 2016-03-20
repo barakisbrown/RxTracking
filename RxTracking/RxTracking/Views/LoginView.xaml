@@ -6,11 +6,35 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d ignore"
-        DataContext="{Binding MainLogin, Source={StaticResource Locator}}">
+        DataContext="{Binding MainLogin, Source={StaticResource Locator}}" 
+        Height="275.76" ResizeMode="NoResize" Title="RxTracking Login" WindowStartupLocation="CenterScreen"
+        ShowMinButton="False" ShowMaxRestoreButton="False" Width="661.254">
 
-    <Grid>
-        
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="168*"/>
+            <RowDefinition Height="44*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="280,0,0,0" Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="button" Content="New User " Command="{Binding ContactCommand}" Margin="185,0,5,0"
+                    HorizontalContentAlignment="Center" Width="85.68" Style="{DynamicResource SquareButtonStyle}" />
+            <Button x:Name="button1" Content="Login" Command="{Binding LoginCommand}" Width="88.627"
+                    Style="{DynamicResource SquareButtonStyle}"/>
+        </StackPanel>
+
+        <Border BorderBrush="Black" BorderThickness="1">
+            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="" Margin="-1,-1,1,-1"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
+        </Border>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="122,69.034,0,72.803" Grid.Row="1" Text="{Binding USER}" Width="120" 
+                 controls:TextBoxHelper.Watermark="User Name" />
+        <PasswordBox x:Name="passwBox" HorizontalAlignment="Right" Margin="0,69.034,177.254,72.803" Width="120" Grid.Row="1"
+                 controls:TextBoxHelper.Watermark="Password Here" PasswordChanged="passwBox_PasswordChanged" />
+
 
     </Grid>
+
+
 </controls:MetroWindow>
 

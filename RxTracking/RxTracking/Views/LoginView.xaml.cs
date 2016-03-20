@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace RxTracking.Views
 {
@@ -13,6 +14,14 @@ namespace RxTracking.Views
         public LoginView()
         {
             InitializeComponent();
+        }
+
+        private void passwBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+            {
+                { ((dynamic)this.DataContext).PASS = ((PasswordBox)sender).Password; }
+            }
         }
     }
 }
