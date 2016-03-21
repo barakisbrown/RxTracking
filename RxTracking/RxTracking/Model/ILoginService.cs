@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
     public interface ILoginService
     {
-        bool userExist(string usrname );
-        bool createUser(Logins usr);
-        bool loginOkay(Logins usr);
+        bool UserExist(string usrname );
+        bool CreateUser(Logins usr);
+        bool LoginOkay(Logins usr);
 
     }
 

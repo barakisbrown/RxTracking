@@ -15,7 +15,7 @@
             _db = _client.GetDatabase(Properties.Settings.Default._dbName);
         }
 
-        public bool userExist(string username)
+        public bool UserExist(string username)
         {
             if (username.Equals(""))
             {
@@ -29,14 +29,14 @@
                 var filter = Builders<BsonDocument>.Filter.Eq("username", username);
                 var count = col.Find(filter).Count();
 
-                return (count == 1) ? true : false;
+                return count == 1;
             }
 
         }
 
-        public bool createUser(Logins usr)
+        public bool CreateUser(Logins usr)
         {
-            if (userExist(usr.UserName))
+            if (UserExist(usr.UserName))
             {
                 try
                 {
@@ -59,7 +59,7 @@
             return false;
         }
 
-        public bool loginOkay(Logins usr)
+        public bool LoginOkay(Logins usr)
         {
             if (usr == null)
             {

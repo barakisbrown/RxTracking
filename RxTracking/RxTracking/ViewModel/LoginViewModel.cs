@@ -58,9 +58,9 @@ namespace RxTracking.ViewModel
         private void Login()
         {
             // Just testing to make sure I am getting the right values
-            if (_loginService.loginOkay(_logins))
+            if (_loginService.LoginOkay(_logins))
             {
-                var msg = Properties.Settings.Default._LoginSuccessMsg + USER;
+                var msg = Properties.Settings.Default._LoginSuccessMsg + User;
                 MessageBox.Show(msg, Properties.Settings.Default._appName, MessageBoxButton.OK);
                 // LAUNCH THE APP -- 
                 Messenger.Default.Send(new NotificationMessage("Open OrderView"));
@@ -87,7 +87,7 @@ namespace RxTracking.ViewModel
 
         public const string UserNameProperty = "USER";
 
-        public string USER
+        public string User
         {
             get { return _logins.UserName; }
             set { _logins.UserName = value; }
@@ -95,7 +95,7 @@ namespace RxTracking.ViewModel
 
         public const string PasswordProperty = "PASS";
 
-        public string PASS
+        public string Pass
         {
             get { return _logins.Password; }
             set { _logins.Password = value; }

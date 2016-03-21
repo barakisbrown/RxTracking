@@ -18,6 +18,10 @@ namespace RxTracking.Views
             Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
         }
 
+        /// <summary>
+        /// This function allows me to open other views from here and to keep the MVVM pattern intact.
+        /// </summary>
+        /// <param name="obj"></param>
         private void NotificationMessageReceived(NotificationMessage obj)
         {
             if (obj.Notification == "Open ContactView")
@@ -38,7 +42,7 @@ namespace RxTracking.Views
         {
             if (this.DataContext != null)
             {
-                { ((dynamic)this.DataContext).PASS = ((PasswordBox)sender).Password; }
+                { ((dynamic)this.DataContext).Pass = ((PasswordBox)sender).Password; }
             }
         }
     }
