@@ -20,15 +20,15 @@ namespace RxTracking.ViewModel
     public class LoginViewModel : ViewModelBase
     {
         #region Private Fields
-        private readonly ILoginService _loginService;
+        private readonly IUserService _userService;
         private readonly Logins _logins;
         #endregion
         /// <summary>
         /// Initializes a new instance of the LoginViewModel class.
         /// </summary>
-        public LoginViewModel(ILoginService loginService)
+        public LoginViewModel(IUserService userService)
         {
-            _loginService = loginService;
+            _userService = userService;
             _logins = new Logins();
             LoginCommand = new RelayCommand(Login,CheckLogin);
             ContactCommand = new RelayCommand(Contact);                       
@@ -58,7 +58,7 @@ namespace RxTracking.ViewModel
         private void Login()
         {
             // Just testing to make sure I am getting the right values
-            if (_loginService.LoginOkay(_logins))
+            if (_userService.LoginOkay(_logins))
             {
                 var msg = Properties.Settings.Default._LoginSuccessMsg + User;
                 MessageBox.Show(msg, Properties.Settings.Default._appName, MessageBoxButton.OK);

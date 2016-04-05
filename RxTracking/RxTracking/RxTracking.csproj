@@ -102,13 +102,21 @@
     <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\DataItem.cs" />
     <Compile Include="Model\DataService.cs" />
+    <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\IDataService.cs" />
-    <Compile Include="Model\ILoginService.cs" />
+    <Compile Include="Model\Items.cs" />
+    <Compile Include="Model\IUserService.cs" />
     <Compile Include="Model\Logins.cs" />
-    <Compile Include="Model\LoginService.cs" />
+    <Compile Include="Model\Orders.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserService.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\UserDetailsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\UserDetails.xaml.cs">
+      <DependentUpon>UserDetails.xaml</DependentUpon>
+    </Compile>
     <Page Include="Skins\RxRoundButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -135,6 +143,10 @@
     <Page Include="Skins\MainSkin.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserDetails.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

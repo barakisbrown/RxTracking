@@ -27,8 +27,8 @@ namespace RxTracking.Views
             if (obj.Notification == "Open ContactView")
             {
                 Messenger.Default.Unregister<NotificationMessage>("Open ContactView");
-                var contact = new ContactView();                
-                contact.ShowDialog();
+                var user = new UserDetails();                
+                user.ShowDialog();
             }
             else if (obj.Notification == "Open OrderView")
             {

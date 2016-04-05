@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
     using GalaSoft.MvvmLight;
 
     public class Logins : ObservableObject 
     {
         #region private properties
 
-        private string _id;
+        private ObjectId _id;
         private string _username;
         private string _password;
 
@@ -31,20 +25,21 @@ namespace RxTracking.Model
         public const string PasswordProperty = "Password";
 
         [BsonId]
-        public string ID
+        [BsonElement("_id")]
+        public ObjectId ID
         {
             get { return _id; }
             set { Set(IdProperyName, ref _id, value); }
         }
 
-        [BsonElement]
+        [BsonElement("username")]
         public string UserName
         {
             get { return _username;}
             set { Set(UserNamePropName, ref _username, value); }
         }
 
-        [BsonElement]
+        [BsonElement("password")]
         public string Password
         {
             get { return _password; }

@@ -12,6 +12,7 @@
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
+using MongoDB.Driver;
 using RxTracking.Model;
 
 namespace RxTracking.ViewModel
@@ -25,23 +26,50 @@ namespace RxTracking.ViewModel
     /// </summary>
     public class ViewModelLocator
     {
+        private static readonly IMongoDatabase Database;
+        public const string USERS_COLL_NAME = "users";
+        public const string ORDERS_COLL_NAME = "orders";
+        public const string ITEMS_COLL_NAME = "items";
+
         static ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             if (ViewModelBase.IsInDesignModeStatic)
             {
-                SimpleIoc.Default.Register<IDataService, Design.DesignDataService>();
+
             }
             else
             {
-                SimpleIoc.Default.Register<IDataService, DataService>();
-                SimpleIoc.Default.Register<ILoginService, LoginService>();
+                SimpleIoc.Default.Register<IUserService, UserService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
-            SimpleIoc.Default.Register<ContactViewModel>();
+
+            // MONGODB HERE
+            Client = new MongoClient(Properties.Settings.Default._dbUrl);
+            Database = Client.GetDatabase(Properties.Settings.Default._dbName);
+        }
+
+        public static IMongoClient Client { get; }
+
+        public static IMongoCollection<User> Users
+        {
+            get
+            {
+                return Database.GetCollection<User>(USERS_COLL_NAME);
+            }
+        }
+
+        public static IMongoCollection<Orders> Orders
+        {
+            get { return Database.GetCollection<Orders>(ORDERS_COLL_NAME); }
+        }
+
+        public static IMongoCollection<Items> Items
+        {
+            get { return Database.GetCollection<Items>(ITEMS_COLL_NAME); }
         }
 
         /// <summary>
@@ -67,10 +95,11 @@ namespace RxTracking.ViewModel
             }
         }
 
-        public ContactViewModel Contacts
+        public UserDetailsViewModel User
         {
-            get { return ServiceLocator.Current.GetInstance<ContactViewModel>(); }
+            get { return ServiceLocator.Current.GetInstance<UserDetailsViewModel>(); }
         }
+
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>
