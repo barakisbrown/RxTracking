@@ -18,8 +18,7 @@ namespace RxTracking.Model
             {
                 var col = ViewModelLocator.Users;
                 // SEE IF THE USERNAME EXIST
-                var filter = Builders<User>.Filter.Eq("login.username", usrname);
-                var count = col.CountAsync(filter);
+                var count = col.CountAsync(x => x.Logins.UserName == usrname);
 
                 return (count.Result == 1);
             }
@@ -51,8 +50,7 @@ namespace RxTracking.Model
             else
             {
                 var col = ViewModelLocator.Users;
-                var filter = Builders<User>.Filter.Eq("login.username", usr.Logins.UserName);
-                var result = col.Find(filter).FirstOrDefaultAsync();
+                var result = col.Find(x => x.Logins.UserName == usr.Logins.UserName).FirstOrDefaultAsync();
 
                 if (result == null)
                 {
@@ -75,9 +73,8 @@ namespace RxTracking.Model
             }
             else
             {
-                var filter = Builders<User>.Filter.Eq("logins.username", login.UserName);
                 var col = ViewModelLocator.Users;
-                var result = col.Find(filter).FirstOrDefaultAsync();
+                var result = col.Find(x => x.Logins.UserName == login.UserName).FirstOrDefaultAsync();
 
                 if (result == null)
                 {

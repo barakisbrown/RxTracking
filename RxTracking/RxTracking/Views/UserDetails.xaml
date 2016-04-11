@@ -9,5 +9,6 @@
         DataContext="{Binding User, Source={StaticResource Locator}}">
 
     <Grid>
+        
     </Grid>
 </controls:MetroWindow>

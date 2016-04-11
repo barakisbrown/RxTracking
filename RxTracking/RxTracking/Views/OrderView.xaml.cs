@@ -5,7 +5,7 @@ namespace RxTracking.Views
     /// <summary>
     /// Description for OrderView.
     /// </summary>
-    public partial class OrderView : Window
+    public partial class OrderView
     {
         /// <summary>
         /// Initializes a new instance of the OrderView class.

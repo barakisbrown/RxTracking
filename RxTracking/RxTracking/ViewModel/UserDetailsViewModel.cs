@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using RxTracking.Model;
 
 namespace RxTracking.ViewModel
 {
@@ -8,13 +9,21 @@ namespace RxTracking.ViewModel
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class UserDetailsViewModel : ViewModelBase
+    public abstract class UserDetailsViewModel : ViewModelBase
     {
+        private readonly IUserService _userService;
+        private readonly User _user = new User();
         /// <summary>
         /// Initializes a new instance of the UserDetailsViewModel class.
         /// </summary>
-        public UserDetailsViewModel()
+        public UserDetailsViewModel(IUserService userService)
         {
+            _userService = userService;
         }
+
+        public User Usr
+        {
+            get { return _user; }
+        }       
     }
 }
