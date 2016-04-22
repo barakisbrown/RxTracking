@@ -11,6 +11,12 @@
         ShowMinButton="False" ShowMaxRestoreButton="False" Width="661.254">
 
     <Grid >
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#73C8A9" Offset="0"/>
+                <GradientStop Color="#373B44" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="168*"/>

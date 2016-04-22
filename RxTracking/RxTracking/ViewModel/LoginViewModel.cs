@@ -1,7 +1,9 @@
 ﻿using System;
 using GalaSoft.MvvmLight.Messaging;
 using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Practices.ServiceLocation;
+using RxTracking.Views;
 
 namespace RxTracking.ViewModel
 {
@@ -78,7 +80,6 @@ namespace RxTracking.ViewModel
         {
             // Remove the following line after I have merged this since this will be the next thing I am working on
             Messenger.Default.Send(new NotificationMessage("Open ContactView"));
-
         }
 
         #region Public Properties

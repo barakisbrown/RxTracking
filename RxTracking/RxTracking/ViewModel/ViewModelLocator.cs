@@ -35,17 +35,14 @@ namespace RxTracking.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            if (ViewModelBase.IsInDesignModeStatic)
-            {
-
-            }
-            else
+            if (!SimpleIoc.Default.IsRegistered<IUserService>())
             {
                 SimpleIoc.Default.Register<IUserService, UserService>();
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<UserDetailsViewModel>();
 
             // MONGODB HERE
             Client = new MongoClient(Properties.Settings.Default._dbUrl);
@@ -95,9 +92,12 @@ namespace RxTracking.ViewModel
             }
         }
 
-        public UserDetailsViewModel User
+        public UserDetailsViewModel UserDetails
         {
-            get { return ServiceLocator.Current.GetInstance<UserDetailsViewModel>(); }
+            get
+            {
+                return ServiceLocator.Current.GetInstance<UserDetailsViewModel>();
+            }
         }
 
         /// <summary>
@@ -105,6 +105,9 @@ namespace RxTracking.ViewModel
         /// </summary>
         public static void Cleanup()
         {
+            var viewModelLocator = (ViewModelLocator)App.Current.Resources["Locator"];
+            viewModelLocator.MainLogin.Cleanup();
+            viewModelLocator.UserDetails.Cleanup();
         }
     }
 }
