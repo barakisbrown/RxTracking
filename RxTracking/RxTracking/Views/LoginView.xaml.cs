@@ -1,9 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using GalaSoft.MvvmLight.Messaging;
-
-namespace RxTracking.Views
+﻿namespace RxTracking.Views
 {
+    using System.Windows;
+    using System.Windows.Controls;
+    using GalaSoft.MvvmLight.Messaging;
+
     /// <summary>
     /// Description for LoginView.
     /// </summary>
@@ -15,34 +15,44 @@ namespace RxTracking.Views
         public LoginView()
         {
             InitializeComponent();
-            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);
+            Messenger.Default.Register<NotificationMessage>(this, NotificationMessageReceived);            
         }
 
         /// <summary>
         /// This function allows me to open other views from here and to keep the MVVM pattern intact.
+        /// Notifications Received
+        ///     A. ContactView - Opens the ContactView so that a new user and enters his information
+        ///     B. OrderView --> Opens the main app which is the Orderview
+        ///     C. Exit      --> Exit the App
         /// </summary>
         /// <param name="obj"></param>
         private void NotificationMessageReceived(NotificationMessage obj)
         {
-            if (obj.Notification == "Open ContactView")
+            if (obj.Notification == "ContactView")
             {
-                Messenger.Default.Unregister<NotificationMessage>("Open ContactView");
+                Messenger.Default.Unregister<NotificationMessage>("ContactView");
                 var user = new UserDetails();                
                 user.ShowDialog();
             }
-            else if (obj.Notification == "Open OrderView")
+            else if (obj.Notification == "OrderView")
             {
-                Messenger.Default.Unregister<NotificationMessage>("Open OrderView");
+                Messenger.Default.Unregister<NotificationMessage>("OrderView");
                 var orders = new OrderView();
                 orders.Show();
+            }
+            else if (obj.Notification == "Exit")
+            {
+                Messenger.Default.Unregister<NotificationMessage>("Exit");
+                DataContext = null;
+                Close();
             }
         }
 
         private void passwBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext != null)
+            if (DataContext != null)
             {
-                { ((dynamic)this.DataContext).Pass = ((PasswordBox)sender).Password; }
+                { ((dynamic)DataContext).Pass = ((PasswordBox)sender).Password; }
             }
         }
     }

@@ -87,5 +87,20 @@ namespace RxTracking.Model
 
             }
         }
+
+        public User GetUserInfo(Logins login)
+        {
+            if (login == null)
+            {
+                throw new NullReferenceException("Login is null");
+            }
+            else
+            {
+                var col = ViewModelLocator.Users;
+                var result = col.Find(x => x.Logins.UserName == login.UserName).FirstOrDefaultAsync();
+
+                return result?.Result;
+            }
+        }
     }
 }

@@ -43,6 +43,7 @@ namespace RxTracking.ViewModel
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<UserDetailsViewModel>();
+            SimpleIoc.Default.Register<OrderViewModel>();
 
             // MONGODB HERE
             Client = new MongoClient(Properties.Settings.Default._dbUrl);
@@ -100,6 +101,11 @@ namespace RxTracking.ViewModel
             }
         }
 
+        public OrderViewModel OrderVM
+        {
+            get { return ServiceLocator.Current.GetInstance<OrderViewModel>(); }
+        }
+
         /// <summary>
         /// Cleans up all the resources.
         /// </summary>
@@ -107,7 +113,7 @@ namespace RxTracking.ViewModel
         {
             var viewModelLocator = (ViewModelLocator)App.Current.Resources["Locator"];
             viewModelLocator.MainLogin.Cleanup();
-            viewModelLocator.UserDetails.Cleanup();
+            viewModelLocator.UserDetails.Cleanup();            
         }
     }
 }

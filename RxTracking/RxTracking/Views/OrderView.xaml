@@ -6,8 +6,12 @@
         xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
-        DataContext="{Binding ViewModelName, Source={StaticResource Locator}}">
+        DataContext="{Binding OrderVM, Source={StaticResource Locator}}"
+        Title="{Binding Title}">
 
     <Grid>
+        <Label x:Name="label" Content="FullName" HorizontalAlignment="Left" Margin="267,226,0,0" VerticalAlignment="Top" Width="62" Height="33"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="356,231,0,0" TextWrapping="Wrap" Text="{Binding FullName}" VerticalAlignment="Top" 
+                   Height="28" Width="72"/>
     </Grid>
 </controls:MetroWindow>

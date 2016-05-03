@@ -23,5 +23,20 @@
     <Setting Name="_LoginViewHeaderMsg" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Welcome to Rx Tracking. Pleae enter your credentials or Click New User</Value>
     </Setting>
+    <Setting Name="_userName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="_passwordNotMatch" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Your passwords do not match. Please check them and renter them</Value>
+    </Setting>
+    <Setting Name="_usernameExists" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Username Exist. Please try another one</Value>
+    </Setting>
+    <Setting Name="_userDetailsTItle" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">RxTracking User Details Form</Value>
+    </Setting>
+    <Setting Name="_orderListTitle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RxTracking Order Listing</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

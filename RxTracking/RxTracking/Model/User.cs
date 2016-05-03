@@ -16,6 +16,7 @@ namespace RxTracking.Model
         private string _city;
         private string _state;
         private string _zipCode;
+        private string _phone;
         private Logins _logins;
         private List<Doctor> _doctors;
         #endregion
@@ -42,6 +43,7 @@ namespace RxTracking.Model
             _city = "";
             _state = "";
             _zipCode = "";
+            _phone = "";
             _logins = new Logins();
             _doctors = new List<Doctor>();
         }
@@ -102,6 +104,13 @@ namespace RxTracking.Model
         {
             get { return _zipCode; }
             set { Set(ZipCodeProperty, ref _zipCode, value); }
+        }
+
+        [BsonElement("phone")]
+        public string Phone
+        {
+            get { return _phone; }
+            set { Set("PHONE", ref _phone, value); }
         }
 
         [BsonElement("login")]

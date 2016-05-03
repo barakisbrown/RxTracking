@@ -1,17 +1,10 @@
-﻿using System;
-using GalaSoft.MvvmLight.Messaging;
-using MahApps.Metro.Controls;
-using MahApps.Metro.Controls.Dialogs;
-using Microsoft.Practices.ServiceLocation;
-using RxTracking.Views;
-
-namespace RxTracking.ViewModel
+﻿namespace RxTracking.ViewModel
 {
     using System.Windows;
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.CommandWpf;
     using Model;
-
+    using GalaSoft.MvvmLight.Messaging;
 
     /// <summary>
     /// LoginViewModem for the LoginView
@@ -61,25 +54,25 @@ namespace RxTracking.ViewModel
         {
             // Just testing to make sure I am getting the right values
             if (_userService.LoginOkay(_logins))
-            {
-                var msg = Properties.Settings.Default._LoginSuccessMsg + User;
-                MessageBox.Show(msg, Properties.Settings.Default._appName, MessageBoxButton.OK);
-                // LAUNCH THE APP -- 
-                Messenger.Default.Send(new NotificationMessage("Open OrderView"));
-                return;
-                // CHANGE THE RETURN TO THE VIEWMODEL of the Order Class once this is committed to github
+            {                
+                Properties.Settings.Default._userName = _logins.UserName;
+                Properties.Settings.Default.Save();
+                Messenger.Default.Send(new NotificationMessage("OrderView"));
+                Messenger.Default.Send(new NotificationMessage("Exit"));
             }
-            // USER DOES NOT EXIST
-            MessageBox.Show(Properties.Settings.Default._LoginErrorMsg,Properties.Settings.Default._appName, MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
+                // USER DOES NOT EXIST
+                MessageBox.Show(Properties.Settings.Default._LoginErrorMsg, Properties.Settings.Default._appName,MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         /// <summary>
         /// Launches the Contact View and ViewModel
         /// </summary>
         private void Contact()
-        {
-            // Remove the following line after I have merged this since this will be the next thing I am working on
-            Messenger.Default.Send(new NotificationMessage("Open ContactView"));
+        {           
+            Messenger.Default.Send(new NotificationMessage("ContactView"));
         }
 
         #region Public Properties

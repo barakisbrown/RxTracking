@@ -85,5 +85,59 @@ namespace RxTracking.Properties {
                 return ((string)(this["_LoginViewHeaderMsg"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string _userName {
+            get {
+                return ((string)(this["_userName"]));
+            }
+            set {
+                this["_userName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Your passwords do not match. Please check them and renter them")]
+        public string _passwordNotMatch {
+            get {
+                return ((string)(this["_passwordNotMatch"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Username Exist. Please try another one")]
+        public string _usernameExists {
+            get {
+                return ((string)(this["_usernameExists"]));
+            }
+            set {
+                this["_usernameExists"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RxTracking User Details Form")]
+        public string _userDetailsTItle {
+            get {
+                return ((string)(this["_userDetailsTItle"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("RxTracking Order Listing")]
+        public string _orderListTitle {
+            get {
+                return ((string)(this["_orderListTitle"]));
+            }
+            set {
+                this["_orderListTitle"] = value;
+            }
+        }
     }
 }
