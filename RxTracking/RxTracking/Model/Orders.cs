@@ -13,8 +13,9 @@
         #region Private_Fields
         private ObjectId _id;
         private ObjectId _userId;
-        private Items _item;
+        private ObjectId _itemId;
         private DateTime _purchaseDate;
+        private DateTime _refillDate;
         private double _refillsLeft;
         private double _cost;
         private bool _insurance;
@@ -28,7 +29,20 @@
         private const string RefillPropertyName = "REFILLS";
         private const string CostPropertyName = "COST";
         private const string InsurancePropertyName = "INSURANCE";
+        private const string RefillDatePropertName = "REFILLDATE";
         #endregion
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public Orders()
+        {
+            _purchaseDate = DateTime.Now;
+            _refillDate = DateTime.Now;
+            _refillsLeft = 0;
+            _cost = 0;
+            _insurance = false;
+        }
 
         #region Public Properties
         [BsonId]
@@ -47,10 +61,10 @@
         }
 
         [BsonElement("item")]
-        public Items Item
+        public ObjectId Item
         {
-            get { return _item;}
-            set { Set(ItemPropertName, ref _item, value); }
+            get { return _itemId;}
+            set { Set(ItemPropertName, ref _itemId, value); }
         }
 
         [BsonElement("purchaseDate")]
@@ -58,6 +72,13 @@
         {
             get { return _purchaseDate;}
             set { Set(PurchasePropertyName, ref _purchaseDate, value); }
+        }
+
+        [BsonElement("refillDate")]
+        public DateTime RefillDate
+        {
+            get { return _refillDate;}
+            set { Set(RefillDatePropertName, ref _refillDate, value); }
         }
 
         [BsonElement("refillLeft")]

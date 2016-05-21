@@ -4,7 +4,6 @@ namespace RxTracking.Model
 {
     using System.Collections.Generic;
     using MongoDB.Bson;
-    using System;
     using GalaSoft.MvvmLight;
 
     /// <summary>
@@ -23,7 +22,7 @@ namespace RxTracking.Model
         private double _qty;
         private double _days;
         private double _maxRefills;
-        private DateTime _fillDate;
+        private List<Orders> _orders;
         #endregion
 
         #region Property Names
@@ -37,8 +36,25 @@ namespace RxTracking.Model
         private const string QtyProperty = "QTY";
         private const string DaysProperty = "DAYS";
         private const string MaxRefillsProperty = "MAX_REFILLS";
-        private const string FillDateProperty = "FILLDATE";
+        private const string OrdersProperty = "ORDERS";
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Items()
+        {
+            _doctorName = "";
+            _rxNumber = "";
+            _name = "";
+            _typeName = "";
+            _strengths = new List<double>();
+            _ndc = "";
+            _qty = 0;
+            _days = 0;
+            _maxRefills = 0;
+            _orders = new List<Orders>();
+        }
 
         # region Public Properties
         [BsonId]
@@ -136,12 +152,12 @@ namespace RxTracking.Model
             set { Set(MaxRefillsProperty, ref _maxRefills, value); }
         }
 
-        [BsonElement("filldate")]
-        public DateTime FillDate
+        [BsonElement("orders")]
+        public List<Orders> Orders
         {
-            get { return _fillDate; }
-            set { Set(FillDateProperty, ref _fillDate, value); }
-        }
+            get { return _orders; }
+            set { Set(OrdersProperty, ref _orders, value); }
+        } 
         #endregion
     }
 }

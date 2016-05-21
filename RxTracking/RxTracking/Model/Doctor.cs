@@ -1,4 +1,5 @@
-﻿using System.Windows.Documents;
+﻿using System.Runtime.InteropServices;
+using System.Windows.Documents;
 using GalaSoft.MvvmLight;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -18,6 +19,14 @@ namespace RxTracking.Model
         private const string PhonePropertyame = "PHONE";
         private const string NotesPropertyName = "NOTES";
         private const string PrimaryPropertyName = "PRIMARY";
+
+        public Doctor()
+        {
+            _name = "";
+            _phone = "";
+            _name = "";
+            _primary = false;
+        }
 
         [BsonId]
         [BsonElement("_id")]

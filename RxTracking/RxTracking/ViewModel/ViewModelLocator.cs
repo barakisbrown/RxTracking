@@ -40,7 +40,6 @@ namespace RxTracking.ViewModel
                 SimpleIoc.Default.Register<IUserService, UserService>();
             }
 
-            SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<UserDetailsViewModel>();
             SimpleIoc.Default.Register<OrderViewModel>();
@@ -76,14 +75,7 @@ namespace RxTracking.ViewModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
-
+        
         public LoginViewModel MainLogin
         {
             get

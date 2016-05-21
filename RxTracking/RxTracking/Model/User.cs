@@ -32,8 +32,13 @@ namespace RxTracking.Model
         private const string ZipCodeProperty = "ZIPCODE";
         private const string LoginsProperty = "LOGINS";
         private const string DoctorProperty = "DOCTORS";
-        #endregion
+        private const string PhoneProperty = "PHONE";
 
+        #endregion
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public User()
         {
             _firstName = "";
@@ -110,7 +115,7 @@ namespace RxTracking.Model
         public string Phone
         {
             get { return _phone; }
-            set { Set("PHONE", ref _phone, value); }
+            set { Set(PhoneProperty, ref _phone, value); }
         }
 
         [BsonElement("login")]
