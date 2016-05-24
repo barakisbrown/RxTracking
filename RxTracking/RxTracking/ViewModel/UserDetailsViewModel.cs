@@ -83,19 +83,27 @@
         public string UserName
         {
             get { return _username; }
-            set { Set(UserPropertyName, ref _username, value); }
+            set
+            {
+                _logins.UserName = value;
+                Set(UserPropertyName, ref _username, value);
+            }
         }
 
         public string Password
         {
             get { return _password; }
-            set { Set(PasswordPropertyName, ref _password, value); }
+            set
+            {
+                _logins.Password = value;
+                Set(PasswordPropertyName, ref _password, value);
+            }
         }
 
         public string VerifyPassword
         {
             get { return _confirmPassword; }
-            set { Set(VerifyPasswordPropertyName, ref _confirmPassword, value); } 
+            set { Set(VerifyPasswordPropertyName, ref _confirmPassword, value); }
         }
 
         public string SelectedState

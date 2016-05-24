@@ -123,7 +123,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Design\DesignDataService.cs" />
     <Compile Include="Model\Doctor.cs" />
     <Compile Include="Model\Items.cs" />
     <Compile Include="Model\IUserService.cs" />
@@ -203,6 +202,7 @@
     <Resource Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Design\" />
     <Folder Include="SampleData\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

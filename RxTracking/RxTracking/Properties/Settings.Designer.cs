@@ -25,7 +25,7 @@ namespace RxTracking.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://localhost:27017")]
+        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://lokislayer.com:27017")]
         public string _dbUrl {
             get {
                 return ((string)(this["_dbUrl"]));

@@ -14,11 +14,15 @@ namespace RxTracking.Model
             }
             else
             {
-                var col = ViewModelLocator.Users;
-                // SEE IF THE USERNAME EXIST
-                var count = col.CountAsync(x => x.Logins.UserName == usrname);
+                if (CollectionExist())
+                {
+                    var col = ViewModelLocator.Users;
+                    // SEE IF THE USERNAME EXIST
+                    var count = col.CountAsync(x => x.Logins.UserName == usrname);
 
-                return (count.Result == 1);
+                    return (count.Result == 1);
+                }
+                return false;
             }
         }
 
@@ -49,17 +53,20 @@ namespace RxTracking.Model
             {
                 var col = ViewModelLocator.Users;
                 var result = col.Find(x => x.Logins.UserName == usr.Logins.UserName).FirstOrDefaultAsync();
-
-                if (result == null)
+                if (CollectionExist())
                 {
-                    return false;
+                    if (result == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        var pass = result.Result.Logins.Password;
+                        var match = global::BCrypt.Net.BCrypt.Verify(usr.Logins.Password, pass);
+                        return match;
+                    }
                 }
-                else
-                {
-                    var pass = result.Result.Logins.Password;
-                    var match = global::BCrypt.Net.BCrypt.Verify(usr.Logins.Password, pass);
-                    return match;
-                }
+                return false;
             }
         }
 
@@ -72,19 +79,23 @@ namespace RxTracking.Model
             else
             {
                 var col = ViewModelLocator.Users;
-                var result = col.Find(x => x.Logins.UserName == login.UserName).FirstOrDefaultAsync();
-
-                if (result == null)
+                // DETERMINE IF THE THIS START OF THE APPLICATION SINCE LOGIN WILL NOT EXIST AT THIS POINT
+                if (CollectionExist())
                 {
-                    return false;
-                }
-                else
-                {
-                    var pass = result.Result.Logins.Password;
-                    var match = global::BCrypt.Net.BCrypt.Verify(login.Password, pass);
-                    return match;
-                }
+                    var result = col.Find(x => x.Logins.UserName == login.UserName).FirstOrDefaultAsync();
 
+                    if (result == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        var pass = result.Result.Logins.Password;
+                        var match = global::BCrypt.Net.BCrypt.Verify(login.Password, pass);
+                        return match;
+                    }
+                }
+                return false;
             }
         }
 
@@ -101,6 +112,16 @@ namespace RxTracking.Model
 
                 return result?.Result;
             }
+        }
+
+        private bool CollectionExist()
+        {
+            var col = ViewModelLocator.Users;
+            // DETERMINE IF THE THIS START OF THE APPLICATION SINCE LOGIN WILL NOT EXIST AT THIS POINT
+            FilterDefinitionBuilder<User> user = new FilterDefinitionBuilder<User>();
+            long count = col.Find<User>(user.Empty).Count();
+            return (count > 0);
+
         }
     }
 }

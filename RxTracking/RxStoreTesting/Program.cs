@@ -15,15 +15,14 @@ namespace RxStoreTesting
         {
             var u = new User() {username = "matthew", password = "Joebob"};
             var u1 = new User() {username = "barakis", password = "matthew"};
-
-            testPassword(u);
-            testPassword(u1);
+            
+            CreateUsers();
             Console.ReadKey();
         }
 
         static void CreateUsers()
         {
-            var client = new MongoClient("mongodb://localhost:27017");
+            var client = new MongoClient("mongodb://lokislayer.com");
             var db = client.GetDatabase("RxStore");
             var col = db.GetCollection<BsonDocument>("Logins");
 

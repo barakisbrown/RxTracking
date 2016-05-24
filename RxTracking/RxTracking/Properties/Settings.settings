@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="_dbUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">mongodb://localhost:27017</Value>
+      <Value Profile="(Default)">mongodb://lokislayer.com:27017</Value>
     </Setting>
     <Setting Name="_dbName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">RxStore</Value>
