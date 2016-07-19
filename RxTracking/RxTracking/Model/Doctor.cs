@@ -1,11 +1,9 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows.Documents;
-using GalaSoft.MvvmLight;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
+    using GalaSoft.MvvmLight;
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+
     public class Doctor : ObservableObject
     {
         private ObjectId _id;
