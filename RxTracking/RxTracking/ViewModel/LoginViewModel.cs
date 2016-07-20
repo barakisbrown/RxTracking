@@ -36,7 +36,7 @@
         /// <returns>True or False depending if they are both empty</returns>
         private bool CheckLogin()
         {
-            if ((_logins.UserName.Equals("")) || (_logins.Password.Equals(""))) 
+            if ((string.IsNullOrEmpty(_logins.UserName)) || (string.IsNullOrEmpty(_logins.Password)))
             {
                 return false;
             }
