@@ -1,16 +1,16 @@
-﻿using System;
-using MongoDB.Driver;
-using RxTracking.ViewModel;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
+    using System;
+    using MongoDB.Driver;
+    using ViewModel;
+
     public class UserService : IUserService
     {
         public bool UserExist(string usrname)
         {
-            if (usrname.Equals(""))
+            if (string.IsNullOrEmpty(usrname))
             {
-                throw new ArgumentException("username is empty.");
+                throw new ArgumentException("username is empty string or null.");
             }
             else
             {
@@ -119,7 +119,7 @@ namespace RxTracking.Model
             var col = ViewModelLocator.Users;
             // DETERMINE IF THE THIS START OF THE APPLICATION SINCE LOGIN WILL NOT EXIST AT THIS POINT
             FilterDefinitionBuilder<User> user = new FilterDefinitionBuilder<User>();
-            long count = col.Find<User>(user.Empty).Count();
+            var count = col.Find<User>(user.Empty).Count();
             return (count > 0);
 
         }
