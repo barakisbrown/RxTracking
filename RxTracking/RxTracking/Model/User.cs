@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using GalaSoft.MvvmLight;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
+    using System.Collections.Generic;
+    using GalaSoft.MvvmLight;
+    using MongoDB.Bson;
+    using MongoDB.Bson.Serialization.Attributes;
+
     public class User : ObservableObject
     {
         #region Private Fields

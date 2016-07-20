@@ -1,10 +1,9 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
     using System.Collections.Generic;
     using MongoDB.Bson;
     using GalaSoft.MvvmLight;
+    using MongoDB.Bson.Serialization.Attributes;
 
     /// <summary>
     /// Model of how an item is described

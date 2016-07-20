@@ -1,8 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using GalaSoft.MvvmLight;
-
-namespace RxTracking.Model
+﻿namespace RxTracking.Model
 {
+    using System.Collections.ObjectModel;
+    using GalaSoft.MvvmLight;
+
     public class US_STATES : ObservableObject
     {
         private string _long;
