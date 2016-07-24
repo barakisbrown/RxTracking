@@ -30,6 +30,8 @@
         {
             if (obj.Notification == "ContactView")
             {
+                UserTxtBox.Text = string.Empty;
+                PasswordBox.Password = string.Empty;
                 Messenger.Default.Unregister<NotificationMessage>("ContactView");
                 var user = new UserDetails();                
                 user.ShowDialog();

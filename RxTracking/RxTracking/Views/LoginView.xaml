@@ -33,10 +33,10 @@
             <TextBlock TextWrapping="Wrap" Text="{Binding HeaderMsg}" Margin="-1,-1,1,-1"
                        HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
         </Border>
-        <TextBox HorizontalAlignment="Left" Margin="122,69.034,0,72.803" Grid.Row="1" Text="{Binding User}" Width="120" 
+        <TextBox x:Name="UserTxtBox"  HorizontalAlignment="Left" Margin="122,69.034,0,72.803" Grid.Row="1" Text="{Binding User}" Width="120" 
                  controls:TextBoxHelper.Watermark="User Name" />
-        <PasswordBox HorizontalAlignment="Right" Margin="0,69.034,177.254,72.803" Width="120" Grid.Row="1"
-                 controls:TextBoxHelper.Watermark="Password Here" PasswordChanged="passwBox_PasswordChanged" />
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Right" Margin="0,69.034,177.254,72.803" Width="120" Grid.Row="1"
+                 controls:TextBoxHelper.Watermark="Password" PasswordChanged="passwBox_PasswordChanged" />
 
 
     </Grid>
