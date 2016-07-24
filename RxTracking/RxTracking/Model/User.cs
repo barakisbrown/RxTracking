@@ -19,6 +19,7 @@
         private string _phone;
         private Logins _logins;
         private List<Doctor> _doctors;
+        private List<ObjectId> _ItemsOrders; 
         #endregion
 
         #region Property Names
@@ -51,6 +52,7 @@
             _phone = "";
             _logins = new Logins();
             _doctors = new List<Doctor>();
+            _ItemsOrders = new List<ObjectId>();
         }
 
         #region Public Properties
@@ -132,8 +134,21 @@
             set { Set(DoctorProperty,ref _doctors, value); }
         }
 
+        [BsonElement("ItemOrders")]
+        public List<ObjectId> ItemsOrders
+        {
+            get
+            {
+                return _ItemsOrders;
+            }
+
+            set { Set("ItemOrderProperty", ref _ItemsOrders, value); }
+        }
+
+
         [BsonIgnore]
         public string FullName => FirstName + " " + MiddleName + " " + LastName;
+
 
         #endregion
     }
