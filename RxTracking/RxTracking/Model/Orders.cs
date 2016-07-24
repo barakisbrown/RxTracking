@@ -12,8 +12,6 @@
     {
         #region Private_Fields
         private ObjectId _id;
-        private ObjectId _userId;
-        private ObjectId _itemId;
         private DateTime _purchaseDate;
         private DateTime _refillDate;
         private double _refillsLeft;
@@ -51,20 +49,6 @@
         {
             get { return _id;}
             set { Set(IdPropertyName, ref _id, value); }
-        }
-
-        [BsonElement("_userID")]
-        public ObjectId UserId
-        {
-            get { return _userId;}
-            set { Set(UserIdPropertyName, ref _userId, value); }
-        }
-
-        [BsonElement("item")]
-        public ObjectId Item
-        {
-            get { return _itemId;}
-            set { Set(ItemPropertName, ref _itemId, value); }
         }
 
         [BsonElement("purchaseDate")]
