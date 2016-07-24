@@ -1,4 +1,6 @@
-﻿namespace RxTracking.Model
+﻿using MongoDB.Bson;
+
+namespace RxTracking.Model
 {
     using System;
     using MongoDB.Driver;
@@ -112,6 +114,20 @@
 
                 return result?.Result;
             }
+        }
+
+        public bool InsertItemOrder(User usr,ObjectId itemOrder)
+        {
+            if (usr == null)
+            {
+                throw new NullReferenceException("User is not created");
+            }
+
+            FilterDefinition<User> F = Builders<User>.Filter.Eq(x => x.Id, usr.Id);
+            UpdateDefinition<User> U = Builders<User>.Update.AddToSet(x => x.ItemsOrders, itemOrder);
+            var col = ViewModelLocator.Users;
+            var result = col.UpdateOne(F, U);
+            return result.ModifiedCount == 1;
         }
 
         private bool CollectionExist()

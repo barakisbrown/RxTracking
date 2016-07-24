@@ -1,4 +1,6 @@
-﻿namespace RxTracking.Model
+﻿using MongoDB.Bson;
+
+namespace RxTracking.Model
 {
     public interface IUserService
     {
@@ -7,5 +9,6 @@
         bool LoginOkay(User usr);
         bool LoginOkay(Logins login);
         User GetUserInfo(Logins login);
+        bool InsertItemOrder(User usr,ObjectId itemOrder);
     }
 }
