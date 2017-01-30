@@ -139,5 +139,23 @@ namespace RxTracking.Properties {
                 this["_orderListTitle"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rxStoreUser")]
+        public string _dbUserName {
+            get {
+                return ((string)(this["_dbUserName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("rxStorePasswd")]
+        public string _dbUserPwd {
+            get {
+                return ((string)(this["_dbUserPwd"]));
+            }
+        }
     }
 }

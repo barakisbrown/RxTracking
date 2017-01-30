@@ -38,5 +38,11 @@
     <Setting Name="_orderListTitle" Type="System.String" Scope="User">
       <Value Profile="(Default)">RxTracking Order Listing</Value>
     </Setting>
+    <Setting Name="_dbUserName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">rxStoreUser</Value>
+    </Setting>
+    <Setting Name="_dbUserPwd" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">rxStorePasswd</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
