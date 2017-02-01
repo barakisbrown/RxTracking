@@ -45,20 +45,7 @@ namespace RxTracking.ViewModel
             SimpleIoc.Default.Register<OrderViewModel>();
 
             // MONGODB HERE
-            // NON-AUTH MODE HERE
-                //  Client = new MongoClient(Properties.Settings.Default._dbUrl);
-                // Database = Client.GetDatabase(Properties.Settings.Default._dbName);
-            // AUTH MODE
-            var mongoCreds = MongoCredential.CreateMongoCRCredential(Properties.Settings.Default._dbName,
-                Properties.Settings.Default._dbUserName,Properties.Settings.Default._dbUserPwd);
-
-            var mongoSettings = new MongoClientSettings
-            {
-                Credentials = new [] { mongoCreds },
-                Server = new MongoServerAddress("lokislayer.com",27017)
-            };
-
-            Client = new MongoClient(mongoSettings);
+            Client = new MongoClient(Properties.Settings.Default._dbUrl);
             Database = Client.GetDatabase(Properties.Settings.Default._dbName);
         }
 
