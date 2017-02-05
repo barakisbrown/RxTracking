@@ -18,8 +18,8 @@
         /// </summary>
         public Logins()
         {
-            UserName = "";
-            Password = "";
+            UserName = string.Empty;
+            Password = string.Empty;
         }
 
         #region Public Properties

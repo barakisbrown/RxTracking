@@ -43,12 +43,12 @@
         /// </summary>
         public Items()
         {
-            _doctorName = "";
-            _rxNumber = "";
-            _name = "";
-            _typeName = "";
+            _doctorName = string.Empty;
+            _rxNumber = string.Empty;
+            _name = string.Empty;
+            _typeName = string.Empty;
             _strengths = new List<double>();
-            _ndc = "";
+            _ndc = string.Empty;
             _qty = 0;
             _days = 0;
             _maxRefills = 0;

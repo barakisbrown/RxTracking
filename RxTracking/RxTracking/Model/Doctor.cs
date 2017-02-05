@@ -20,9 +20,9 @@
 
         public Doctor()
         {
-            _name = "";
-            _phone = "";
-            _name = "";
+            _name = string.Empty;
+            _phone = string.Empty;
+            _name = string.Empty;
             _primary = false;
         }
 

@@ -32,7 +32,7 @@ namespace RxTracking.Model
         {
             try
             {
-                string crypted = global::BCrypt.Net.BCrypt.HashPassword(usr.Logins.Password);
+                var crypted = global::BCrypt.Net.BCrypt.HashPassword(usr.Logins.Password);
                 var col = ViewModelLocator.Users;
                 usr.Logins.Password = crypted;
                 col.InsertOne(usr);

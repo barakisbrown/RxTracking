@@ -42,14 +42,14 @@
         /// </summary>
         public User()
         {
-            _firstName = "";
-            _middleName = "";
-            _lastName = "";
-            _address = "";
-            _city = "";
-            _state = "";
-            _zipCode = "";
-            _phone = "";
+            _firstName = string.Empty;
+            _middleName = string.Empty;
+            _lastName = string.Empty;
+            _address = string.Empty;
+            _city = string.Empty;
+            _state = string.Empty;
+            _zipCode = string.Empty;
+            _phone = string.Empty;
             _logins = new Logins();
             _doctors = new List<Doctor>();
             _ItemsOrders = new List<ObjectId>();
