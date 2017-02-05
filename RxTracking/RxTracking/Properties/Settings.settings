@@ -2,11 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RxTracking.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="_dbUrl" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">mongodb://lokislayer.com:27017</Value>
-    </Setting>
     <Setting Name="_dbName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">RxStore</Value>
+      <Value Profile="(Default)">rxstore</Value>
     </Setting>
     <Setting Name="_loginCollectionName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Logins</Value>

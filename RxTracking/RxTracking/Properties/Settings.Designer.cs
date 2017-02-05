@@ -25,16 +25,7 @@ namespace RxTracking.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("mongodb://lokislayer.com:27017")]
-        public string _dbUrl {
-            get {
-                return ((string)(this["_dbUrl"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("RxStore")]
+        [global::System.Configuration.DefaultSettingValueAttribute("rxstore")]
         public string _dbName {
             get {
                 return ((string)(this["_dbName"]));
