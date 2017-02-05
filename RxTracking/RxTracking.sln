@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RxStoreTesting", "RxStoreTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PocoTest", "PocoTest\PocoTest.csproj", "{7CD22DEC-1763-4176-8A53-8C593643E2F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoAuthTest", "MongoAuthTest\MongoAuthTest.csproj", "{EF47FFA4-1529-40CE-848B-572C3CBACE18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{7CD22DEC-1763-4176-8A53-8C593643E2F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7CD22DEC-1763-4176-8A53-8C593643E2F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CD22DEC-1763-4176-8A53-8C593643E2F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF47FFA4-1529-40CE-848B-572C3CBACE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF47FFA4-1529-40CE-848B-572C3CBACE18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF47FFA4-1529-40CE-848B-572C3CBACE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF47FFA4-1529-40CE-848B-572C3CBACE18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

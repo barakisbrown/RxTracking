@@ -9,7 +9,6 @@
   DataContext="{Binding Source={StaticResource Locator}, Path=ViewModelName}"
 */
 
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
 using MongoDB.Driver;
@@ -47,7 +46,7 @@ namespace RxTracking.ViewModel
             // Authentication per credentials
             var user = Properties.Settings.Default._dbUserName;
             var pass = Properties.Settings.Default._dbUserPwd;
-            var server = "lokislayer.com";
+            var server = Properties.Settings.Default._serverName;
             var dbName = Properties.Settings.Default._dbName;
 
             var conn = "mongodb://" + user + ":" + pass + "@" + server + "/" + dbName;
@@ -59,23 +58,11 @@ namespace RxTracking.ViewModel
 
         public static IMongoClient Client { get; }
 
-        public static IMongoCollection<User> Users
-        {
-            get
-            {
-                return Database.GetCollection<User>(USERS_COLL_NAME);
-            }
-        }
+        public static IMongoCollection<User> Users => Database.GetCollection<User>(USERS_COLL_NAME);
 
-        public static IMongoCollection<Orders> Orders
-        {
-            get { return Database.GetCollection<Orders>(ORDERS_COLL_NAME); }
-        }
+        public static IMongoCollection<Orders> Orders => Database.GetCollection<Orders>(ORDERS_COLL_NAME);
 
-        public static IMongoCollection<Items> Items
-        {
-            get { return Database.GetCollection<Items>(ITEMS_COLL_NAME); }
-        }
+        public static IMongoCollection<Items> Items => Database.GetCollection<Items>(ITEMS_COLL_NAME);
 
         /// <summary>
         /// Gets the Main property.
@@ -84,27 +71,11 @@ namespace RxTracking.ViewModel
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
         
-        public LoginViewModel MainLogin
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<LoginViewModel>();
-                
-            }
-        }
+        public LoginViewModel MainLogin => ServiceLocator.Current.GetInstance<LoginViewModel>();
 
-        public UserDetailsViewModel UserDetails
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<UserDetailsViewModel>();
-            }
-        }
+        public UserDetailsViewModel UserDetails => ServiceLocator.Current.GetInstance<UserDetailsViewModel>();
 
-        public OrderViewModel OrderVM
-        {
-            get { return ServiceLocator.Current.GetInstance<OrderViewModel>(); }
-        }
+        public OrderViewModel OrderVM => ServiceLocator.Current.GetInstance<OrderViewModel>();
 
         /// <summary>
         /// Cleans up all the resources.
