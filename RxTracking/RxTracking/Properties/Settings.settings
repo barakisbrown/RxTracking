@@ -41,5 +41,8 @@
     <Setting Name="_dbUserPwd" Type="System.String" Scope="Application">
       <Value Profile="(Default)">rxStorePasswd</Value>
     </Setting>
+    <Setting Name="_serverName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">lokislayer.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

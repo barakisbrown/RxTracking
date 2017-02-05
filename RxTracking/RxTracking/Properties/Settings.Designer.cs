@@ -148,5 +148,14 @@ namespace RxTracking.Properties {
                 return ((string)(this["_dbUserPwd"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("lokislayer.com")]
+        public string _serverName {
+            get {
+                return ((string)(this["_serverName"]));
+            }
+        }
     }
 }
