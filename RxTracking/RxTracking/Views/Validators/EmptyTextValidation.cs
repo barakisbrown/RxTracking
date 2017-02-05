@@ -7,9 +7,9 @@ namespace RxTracking.Views.Validators
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            if (value == null) return new ValidationResult(true, "");
-            var ok = value.Equals("");
-            return ok ? new ValidationResult(false,"Required Field") : new ValidationResult(true, "");
+            if (value == null) return new ValidationResult(true, string.Empty);
+            var ok = value.Equals(string.Empty);
+            return ok ? new ValidationResult(false,"Required Field") : new ValidationResult(true, string.Empty);
         }
     }
 }

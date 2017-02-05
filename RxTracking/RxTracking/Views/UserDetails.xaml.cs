@@ -20,20 +20,20 @@ namespace RxTracking.Views
 
         private void passwordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext != null)
+            if (DataContext != null)
             {
                 {
-                    ((dynamic)this.DataContext).Password = ((PasswordBox)sender).Password; 
+                    ((dynamic)DataContext).Password = ((PasswordBox)sender).Password; 
                 }
             }
         }
 
         private void passwordBox1_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            if (this.DataContext != null)
+            if (DataContext != null)
             {
                 {
-                    ((dynamic)this.DataContext).VerifyPassword = ((PasswordBox)sender).Password; 
+                    ((dynamic)DataContext).VerifyPassword = ((PasswordBox)sender).Password; 
                 }
             }
         }
