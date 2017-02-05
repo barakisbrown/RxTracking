@@ -43,11 +43,19 @@ namespace RxTracking.ViewModel
             SimpleIoc.Default.Register<LoginViewModel>();
             SimpleIoc.Default.Register<UserDetailsViewModel>();
             SimpleIoc.Default.Register<OrderViewModel>();
+            
+            // Authentication per credentials
+            var user = Properties.Settings.Default._dbUserName;
+            var pass = Properties.Settings.Default._dbUserPwd;
+            var server = "lokislayer.com";
+            var dbName = Properties.Settings.Default._dbName;
 
-            // MONGODB HERE
-            Client = new MongoClient(Properties.Settings.Default._dbUrl);
-            Database = Client.GetDatabase(Properties.Settings.Default._dbName);
+            var conn = "mongodb://" + user + ":" + pass + "@" + server + "/" + dbName;
+            Client = new MongoClient(conn);
+            Database = Client.GetDatabase(dbName);
         }
+
+
 
         public static IMongoClient Client { get; }
 
