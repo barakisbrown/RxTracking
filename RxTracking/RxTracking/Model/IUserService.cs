@@ -10,6 +10,5 @@ namespace RxTracking.Model
         bool LoginOkay(Logins login);
         User GetUserInfo(Logins login);
         bool InsertItemOrder(User usr,ObjectId itemOrder);
-        void GitCheck();
     }
 }
