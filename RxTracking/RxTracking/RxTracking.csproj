@@ -138,10 +138,14 @@
     <Compile Include="Model\US_STATES.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
+    <Compile Include="ViewModel\ScriptListViewModel.cs" />
     <Compile Include="ViewModel\UserDetailsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\OrderView.xaml.cs">
       <DependentUpon>OrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScriptsListView.xaml.cs">
+      <DependentUpon>ScriptsListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\UserDetails.xaml.cs">
       <DependentUpon>UserDetails.xaml</DependentUpon>
@@ -169,6 +173,10 @@
     <Page Include="Views\OrderView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ScriptsListView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserDetails.xaml">
       <SubType>Form</SubType>
