@@ -132,6 +132,7 @@
     <Compile Include="Model\IUserService.cs" />
     <Compile Include="Model\Logins.cs" />
     <Compile Include="Model\Orders.cs" />
+    <Compile Include="Model\Script.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserService.cs" />
     <Compile Include="Model\US_STATES.cs" />
