@@ -130,6 +130,15 @@ namespace RxTracking.Model
             return result.ModifiedCount == 1;
         }
 
+        /// <summary>
+        /// Simply creating a dummy function to make sure I did this correctly so I can work on this.
+        /// Once I know this works, I will remove this function.
+        /// </summary>
+        public void GitCheck()
+        {
+            throw new NotImplementedException();
+        }
+
         private bool CollectionExist()
         {
             var col = ViewModelLocator.Users;
