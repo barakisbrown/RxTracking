@@ -151,11 +151,11 @@
             set { Set(MaxRefillsProperty, ref _maxRefills, value); }
         }
 
-        [BsonElement("orders")]
-        public List<Orders> Orders
+        [BsonElement("scripts")]
+        public List<Script> Orders
         {
-            get { return _orders; }
-            set { Set(OrdersProperty, ref _orders, value); }
+            get { return _scripts; }
+            set { Set(OrdersProperty, ref _scripts, value); }
         } 
         #endregion
     }
