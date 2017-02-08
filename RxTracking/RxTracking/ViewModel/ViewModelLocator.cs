@@ -29,6 +29,7 @@ namespace RxTracking.ViewModel
         public const string USERS_COLL_NAME = "users";
         public const string ORDERS_COLL_NAME = "orders";
         public const string ITEMS_COLL_NAME = "items";
+        public const string SCRIPTS_COL_NAME = "scripts";
 
         static ViewModelLocator()
         {
@@ -63,6 +64,8 @@ namespace RxTracking.ViewModel
         public static IMongoCollection<Orders> Orders => Database.GetCollection<Orders>(ORDERS_COLL_NAME);
 
         public static IMongoCollection<Items> Items => Database.GetCollection<Items>(ITEMS_COLL_NAME);
+
+        public static IMongoCollection<Script> Scripts => Database.GetCollection<Script>(SCRIPTS_COL_NAME);
 
         /// <summary>
         /// Gets the Main property.
