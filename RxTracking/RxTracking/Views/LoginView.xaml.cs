@@ -36,11 +36,11 @@
                 var user = new UserDetails();                
                 user.ShowDialog();
             }
-            else if (obj.Notification == "OrderView")
+            else if (obj.Notification == "ScriptListView")
             {
-                Messenger.Default.Unregister<NotificationMessage>("OrderView");
-                var orders = new OrderView();
-                orders.Show();
+                Messenger.Default.Unregister<NotificationMessage>("ScriptListView");
+                var scripts = new ScriptsListView();
+                scripts.Show();
             }
             else if (obj.Notification == "Exit")
             {

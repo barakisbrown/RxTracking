@@ -57,7 +57,7 @@
             {                
                 Properties.Settings.Default._userName = _logins.UserName;
                 Properties.Settings.Default.Save();
-                Messenger.Default.Send(new NotificationMessage("OrderView"));
+                Messenger.Default.Send(new NotificationMessage("ScriptListView"));
                 Messenger.Default.Send(new NotificationMessage("Exit"));
             }
             else

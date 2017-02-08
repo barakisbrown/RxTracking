@@ -1,11 +1,11 @@
-﻿using System.Windows;
+﻿using MahApps.Metro.Controls;
 
 namespace RxTracking.Views
 {
     /// <summary>
     /// Description for ScriptsListView.
     /// </summary>
-    public partial class ScriptsListView : Window
+    public partial class ScriptsListView : MetroWindow
     {
         /// <summary>
         /// Initializes a new instance of the ScriptsListView class.
