@@ -21,7 +21,7 @@
         private double _qty;
         private double _days;
         private double _maxRefills;
-        private List<Orders> _orders;
+        private List<Script> _scripts;
         #endregion
 
         #region Property Names
@@ -52,7 +52,7 @@
             _qty = 0;
             _days = 0;
             _maxRefills = 0;
-            _orders = new List<Orders>();
+            _scripts = new List<Script>();
         }
 
         # region Public Properties
