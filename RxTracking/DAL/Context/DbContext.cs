@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using DAL.Models;
 using MySql.Data.Entity;
 
 namespace DAL.Context
@@ -37,5 +38,10 @@ namespace DAL.Context
         {
             base.OnModelCreating(modelBuilder);
         }
+
+        // TABLES AKA DbSet<>
+        public DbSet<Logins> Logins { get; set; }
+        public DbSet<UserInfo> Users { get; set; }
+        public DbSet<Stores> Stores { get; set; }
     }
 }
