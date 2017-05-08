@@ -16,7 +16,7 @@ namespace DAL.Context
         /// </summary>
         public DbContext() : base("ConnectionString")
         {
-            
+
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace DAL.Context
         public DbContext(DbConnection existingConnection, bool contextOwnConnection)
             : base(existingConnection, contextOwnConnection)
         {
-            
+
         }
 
         /// <summary>
@@ -43,5 +43,8 @@ namespace DAL.Context
         public DbSet<Logins> Logins { get; set; }
         public DbSet<UserInfo> Users { get; set; }
         public DbSet<Stores> Stores { get; set; }
+        public DbSet<Doctors> Doctors { get; set; }
+        public DbSet<Orders> Orders { get; set; }
+        public DbSet<Scripts> Scripts { get; set; }
     }
 }
