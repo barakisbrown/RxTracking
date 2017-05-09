@@ -40,7 +40,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// Name of the Prescription
+        /// Ex: Fenofibrate
         /// </summary>
         [Required]
         public string Name
@@ -50,7 +51,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// Prescription Number
+        /// Ex: 655727
         /// </summary>
         [Required]
         public string Number
@@ -60,7 +62,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// Type of does taken
+        /// Ex: Cap / TAB
         /// </summary>
         [Required]
         public string Type
@@ -70,7 +73,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// The NOC number on the prescription
+        /// Ex: 00074-9642-90
         /// </summary>
         [Required]
         public string Noc
@@ -80,7 +84,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// Number Pills Given
+        /// Ex: 30.0
         /// </summary>
         [Required]
         public double Qty
@@ -90,7 +95,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// How many days of supply
+        /// Ex: 30.0
         /// </summary>
         [Required]
         public double Days
@@ -100,7 +106,8 @@ namespace DAL.Models
         }
 
         /// <summary>
-        /// 
+        /// Current number of refills left
+        /// Ex: 2.0
         /// </summary>
         [Required]
         public double Refills
