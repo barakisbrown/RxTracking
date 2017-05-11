@@ -16,7 +16,6 @@ namespace DAL.Models
         private char[] _zipCode;
         private char[] _phoneNumber;
         private string _email;        
-        private int _loginId;
 
         public UserInfo()
         {
@@ -92,16 +91,6 @@ namespace DAL.Models
         {
             get { return _email; }
             set { Set(ref _email, value); }
-        }
-
-        /// <summary>
-        /// Foreign Key to Logins Table
-        /// </summary>
-        [ForeignKey("Logins")]
-        public int LoginId
-        {
-            get { return _loginId; }
-            set { Set(ref _loginId, value); }
-        }
+        }        
     }
 }
