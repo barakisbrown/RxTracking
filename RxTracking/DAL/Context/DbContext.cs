@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using DAL.Models;
 using MySql.Data.Entity;
 
@@ -36,7 +37,10 @@ namespace DAL.Context
         /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
+            // One-One Logins <=> Contacts
+            modelBuilder.Entity<Logins>()
+                .HasRequired(U => U.User).WithRequiredPrincipal(L => L.Login);
         }
 
         // TABLES AKA DbSet<>

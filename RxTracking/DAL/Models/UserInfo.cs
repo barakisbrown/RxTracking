@@ -91,6 +91,12 @@ namespace DAL.Models
         {
             get { return _email; }
             set { Set(ref _email, value); }
-        }        
+        }  
+        
+        /// <summary>
+        /// Navigation Property for Logins
+        /// UserInfo to Logins is 1 to 1
+        /// </summary>
+        public virtual Logins Login { get; set; }
     }
 }

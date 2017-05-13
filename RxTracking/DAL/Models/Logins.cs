@@ -9,6 +9,7 @@ namespace DAL.Models
         private string _name;
         private byte[] _password;
 
+
         /// <summary>
         /// Primary Key
         /// </summary>
@@ -39,5 +40,11 @@ namespace DAL.Models
             get { return _password;}
             set { Set(ref _password, value); }
         }
+
+        /// <summary>
+        /// Navigation Property
+        /// Logins to UserInfo will be 1 -> 0,1
+        /// </summary>
+        public virtual UserInfo User { get; set; }
     }
 }
