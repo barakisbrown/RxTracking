@@ -15,10 +15,11 @@ namespace DAL.Models
         private string _noc;
         private double _qty;
         private double _days;
-        private double _refills;
+        private double _maxRefills;
         private DateTime _filledDateTime;
         private int _doctorId;
         private int _contactId;
+        private int _orderId;
 
         /// <summary>
         /// Primary Key
@@ -110,10 +111,10 @@ namespace DAL.Models
         /// Ex: 2.0
         /// </summary>
         [Required]
-        public double Refills
+        public double MaxRefills
         {
-            get { return _refills;}
-            set { Set(ref _refills, value); }
+            get { return _maxRefills;}
+            set { Set(ref _maxRefills, value); }
         }
 
         /// <summary>
@@ -144,5 +145,33 @@ namespace DAL.Models
             get { return _contactId; }
             set { Set(ref _contactId, value); }
         }
+
+        /// <summary>
+        /// Foreign Key for Orders
+        /// </summary>
+        [ForeignKey("Orders")]
+        public int OrderId
+        {
+            get { return _orderId;}
+            set { Set(ref _orderId, value); }
+        }
+
+        /// <summary>
+        /// Navigation Property for Table Order
+        /// Script belongs to 1 Order
+        /// </summary>
+        public virtual Orders Order { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Table Doctor
+        /// A script can only have 1 doctor
+        /// </summary>
+        public virtual Doctors Doctor { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Table UserInfo
+        /// A script can only have 1 User
+        /// </summary>
+        public virtual UserInfo User { get; set; }
     }
 }
