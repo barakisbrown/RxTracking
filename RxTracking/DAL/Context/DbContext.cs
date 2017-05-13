@@ -38,9 +38,43 @@ namespace DAL.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
-            // One-One Logins <=> Contacts
+            // One-One Table Configurations
+            // Logins <=> UserInfo
             modelBuilder.Entity<Logins>()
                 .HasRequired(U => U.User).WithRequiredPrincipal(L => L.Login);
+
+            // Orders to Scripts
+            modelBuilder.Entity<Orders>()
+                .HasRequired<Scripts>(s => s.Script).WithRequiredPrincipal(O => O.Order);
+
+            // One to Many Table Configurations
+            // UserInfo(1) to Orders(M)
+            modelBuilder.Entity<Orders>()
+                .HasRequired<UserInfo>(U => U.User).WithMany(o => o.Orders);
+
+            // UserInfo(1) to Scripts(M)
+            modelBuilder.Entity<Scripts>()
+                .HasRequired<UserInfo>(U => U.User).WithMany(S => S.Scripts);
+            
+            // Orders(1) to Stores(M)
+            modelBuilder.Entity<Stores>()
+                .HasRequired<Orders>(O => O.Order).WithMany(S => S.Stores);
+
+            // Doctors(1) to Scripts(M)
+            modelBuilder.Entity<Scripts>()
+                .HasRequired<Doctors>(D => D.Doctor).WithMany(S => S.Scripts);
+
+            // MANY TO MANY TABLE CONFIGURATIONS
+            modelBuilder.Entity<UserInfo>()
+                .HasMany<Doctors>(D => D.Doctors)
+                .WithMany(U => U.Users)
+                .Map(UD =>
+                {
+                    UD.MapLeftKey("UsersId");
+                    UD.MapRightKey("DoctorId");
+                    UD.ToTable("UsersDoctors");
+                });
+
         }
 
         // TABLES AKA DbSet<>
