@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using GalaSoft.MvvmLight;
 
 namespace DAL.Models
@@ -13,6 +14,17 @@ namespace DAL.Models
         private char[] _phoneNumber;
         private string _notes;
         private bool _primary;
+
+        /// <summary>
+        /// Inits Scripts and User Collections
+        /// </summary>
+        public Doctors()
+        {
+            Scripts = new HashSet<Scripts>();
+            Users = new HashSet<UserInfo>();
+        }
+
+
 
         /// <summary>
         /// Primary Key
@@ -62,5 +74,17 @@ namespace DAL.Models
             get { return _primary; }
             set { Set(ref _primary, value); }
         }
+
+        /// <summary>
+        /// Navigation Property to Scripts
+        /// A doctor can have many scripts
+        /// </summary>
+        public virtual ICollection<Scripts> Scripts { get; set; }
+
+        /// <summary>
+        /// Navigation Property to UserInfo
+        /// A doctor can have many UserInfo
+        /// </summary>
+        public virtual ICollection<UserInfo> Users { get; set; }
     }
 }
