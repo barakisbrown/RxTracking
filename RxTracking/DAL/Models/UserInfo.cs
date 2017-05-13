@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Collections.Generic;
+using GalaSoft.MvvmLight;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -22,6 +23,9 @@ namespace DAL.Models
             _state = new char[2];
             _zipCode = new char[10];
             _phoneNumber = new char[13];
+            Orders = new HashSet<Orders>();
+            Scripts = new HashSet<Scripts>();
+            Doctors = new HashSet<Doctors>();
         }
 
         /// <summary>
@@ -98,5 +102,23 @@ namespace DAL.Models
         /// UserInfo to Logins is 1 to 1
         /// </summary>
         public virtual Logins Login { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Orders
+        /// UserInfo can have many Orders
+        /// </summary>
+        public virtual ICollection<Orders> Orders { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Scripts
+        /// UserInfo can have many Scripts
+        /// </summary>
+        public virtual ICollection<Scripts> Scripts { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Doctors
+        /// UserInfo can have many Doctors
+        /// </summary>
+        public virtual ICollection<Doctors> Doctors { get; set; }
     }
 }
