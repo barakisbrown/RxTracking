@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Remoting.Messaging;
 using GalaSoft.MvvmLight;
 
 namespace DAL.Models
@@ -13,8 +15,15 @@ namespace DAL.Models
         private decimal _cost;
         private DateTime _purchaseDateTime;
         private bool _insurance;
+        private double _refillsLeft;
         private int _contactId;
         private int _storeId;
+
+
+        public Orders()
+        {
+            Stores = new HashSet<Stores>();
+        }
 
         /// <summary>
         /// Primary Key
@@ -69,6 +78,15 @@ namespace DAL.Models
         }
 
         /// <summary>
+        /// Current number of refills left
+        /// </summary>
+        public double RefillsLeft
+        {
+            get { return _refillsLeft; }
+            set { Set(ref _refillsLeft, value); }
+        }
+
+        /// <summary>
         /// Foreign Key to UsersInfo
         /// </summary>
         [ForeignKey("UserInfo")]
@@ -87,5 +105,24 @@ namespace DAL.Models
             get { return _storeId; }
             set { Set(ref _storeId, value); }
         }
+
+        /// <summary>
+        /// Navigation Property for UserInfo Table
+        /// Configured One to Many between UserInfo and Orders
+        /// One Order can only have User
+        /// </summary>
+        public virtual UserInfo User { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Stores Table
+        /// This table have many Stores
+        /// </summary>
+        public virtual ICollection<Stores> Stores { get; set; }
+
+        /// <summary>
+        /// Navigation Property for Scripts Table
+        /// 1 Order can have 1 Script
+        /// </summary>
+        public virtual Scripts Script { get; set; }
     }
 }
