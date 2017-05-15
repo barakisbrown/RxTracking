@@ -1,46 +1,86 @@
-﻿using System;
+﻿using DAL.Models;
+using System;
 using System.Collections.ObjectModel;
-using System.Data.Entity;
 using System.Linq;
-using DAL.Models;
 using DbContext = DAL.Context.DbContext;
 
 namespace DAL.Services
 {
     public class UserService : IDataService<UserInfo>
     {
-        private ObservableCollection<UserInfo> _users;
+        private readonly DbContext _context;
         private static UserService _userService;
-        private static object padlock = null;
+        private static object _padlock = null;
 
-
-        private UserService()
+        /// <summary>
+        /// Assign internal context to one passed to this class
+        /// </summary>
+        /// <param name="context"></param>
+        private UserService(DbContext context)
         {
-            
+            _context = context;
         }
 
-        public static UserService GetInstance()
+        /// <summary>
+        /// Created only 1 instance of this object.
+        /// </summary>
+        /// <param name="context">Context created by DbContext Class</param>
+        /// <returns>Returns A UserService Class</returns>
+        public static UserService GetInstance(DbContext context)
         {
-            if (padlock is null)
+            if (_padlock is null)
             {
-                padlock = new object();
-                _userService = new UserService();
+                _padlock = new object();
+                _userService = new UserService(context);
             }
 
             return _userService;
         }
 
-        public ObservableCollection<UserInfo> GetAll()
+        /// <summary>
+        /// Returns all the Users Stored
+        /// </summary>
+        /// <returns>Returns all the Users</returns>
+        public ObservableCollection<UserInfo> GetAll() => _context.Users.Local;
+
+        /// <summary>
+        /// Adds User to the backend. Checks to make sure it has to proper relationships setup to potentially
+        /// check for database errors.
+        /// </summary>
+        /// <param name="newUser">User being added</param>
+        public void Add(UserInfo newUser)
         {
-            throw new NotImplementedException();
-        }
-        
-        public void Add(UserInfo newValue)
-        {
-            throw new NotImplementedException();
+            // REQUIRED SINCE Logins <=> UserInfo are 1 to 1
+            if (newUser.Login == null)
+                throw new NullReferenceException("No login created for this user");
+            else if (newUser.Doctors.Count < 1 || newUser.Doctors == null)
+                throw new NullReferenceException("No Doctor Information Stored");
+            else
+            {
+                _context.Users.Add(newUser);
+                _context.SaveChanges();
+            }
         }
 
-        public int Count()
+        /// <summary>
+        /// Returns the number of Users Exist
+        /// </summary>
+        /// <returns>Number of Users Returned</returns>
+        public int Count() => _context.Users.Count();
+
+        /// <summary>
+        /// Returns the User from the context but if not found, contacts the backend for it.
+        /// </summary>
+        /// <param name="id">User trying to find</param>
+        /// <returns>UserInfo for the User in question</returns>
+        public UserInfo Get(int id) => _context.Users.Local.First(x => x.Id == id);
+
+        /// <summary>
+        /// Removes User from the backend
+        /// </summary>
+        /// <param name="user">The user that needs to be removed</param>
+        /// <returns>True/False depending on the success of the removal</returns>
+        public bool Remove(UserInfo user)
         {
             throw new NotImplementedException();
         }
