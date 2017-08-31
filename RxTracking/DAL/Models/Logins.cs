@@ -16,8 +16,8 @@ namespace DAL.Models
         [Key]
         public int Id
         {
-            get { return _id;;}
-            set { Set(ref _id, value); }
+            get => _id;
+            set => Set(ref _id, value);
         }
 
 
@@ -27,8 +27,8 @@ namespace DAL.Models
         [Required]
         public string Name
         {
-            get { return _name;}
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         /// <summary>
@@ -37,8 +37,8 @@ namespace DAL.Models
         [Required]
         public byte[] Password
         {
-            get { return _password;}
-            set { Set(ref _password, value); }
+            get => _password;
+            set => Set(ref _password, value);
         }
 
         /// <summary>

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using GalaSoft.MvvmLight;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Remoting.Messaging;
-using GalaSoft.MvvmLight;
 
 namespace DAL.Models
 {
@@ -31,8 +30,8 @@ namespace DAL.Models
         [Key]
         public int Id
         {
-            get { return _id; }
-            set { Set(ref _id, value); }
+            get => _id;
+            set => Set(ref _id, value);
         }
 
         /// <summary>
@@ -55,8 +54,8 @@ namespace DAL.Models
         [Required]
         public decimal Cost
         {
-            get { return _cost;}
-            set { Set(ref _cost, value); }
+            get => _cost;
+            set => Set(ref _cost, value);
         }
 
         /// <summary>
@@ -64,8 +63,8 @@ namespace DAL.Models
         /// </summary>
         public DateTime PurchaseDate
         {
-            get { return _purchaseDateTime;;}
-            set { Set(ref _purchaseDateTime, value); }
+            get => _purchaseDateTime;
+            set => Set(ref _purchaseDateTime, value);
         }
 
         /// <summary>
@@ -73,8 +72,8 @@ namespace DAL.Models
         /// </summary>
         public bool Insurance
         {
-            get { return _insurance;}
-            set { Set(ref _insurance, value); }
+            get => _insurance;
+            set => Set(ref _insurance, value);
         }
 
         /// <summary>
@@ -82,8 +81,8 @@ namespace DAL.Models
         /// </summary>
         public double RefillsLeft
         {
-            get { return _refillsLeft; }
-            set { Set(ref _refillsLeft, value); }
+            get => _refillsLeft;
+            set => Set(ref _refillsLeft, value);
         }
 
         /// <summary>
@@ -92,8 +91,8 @@ namespace DAL.Models
         [ForeignKey("UserInfo")]
         public int ContactId
         {
-            get { return _contactId; }
-            set { Set(ref _contactId, value); }
+            get => _contactId;
+            set => Set(ref _contactId, value);
         }
 
         /// <summary>
@@ -102,8 +101,8 @@ namespace DAL.Models
         [ForeignKey("Stores")]
         public int StoresId
         {
-            get { return _storeId; }
-            set { Set(ref _storeId, value); }
+            get => _storeId;
+            set => Set(ref _storeId, value);
         }
 
         /// <summary>
