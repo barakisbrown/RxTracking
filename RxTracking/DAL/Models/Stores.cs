@@ -22,8 +22,8 @@ namespace DAL.Models
         [Key]
         public int Id
         {
-            get { return _id;}
-            set { Set(ref _id, value); }
+            get => _id;
+            set => Set(ref _id, value);
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace DAL.Models
         [Required]
         public string Name
         {
-            get { return _storeName;}
-            set { Set(ref _storeName, value); }
+            get => _storeName;
+            set => Set(ref _storeName, value);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace DAL.Models
         [ForeignKey("Orders")]
         public int OrderId
         {
-            get { return _orderId;}
-            set { Set(ref _orderId, value); }
+            get => _orderId;
+            set => Set(ref _orderId, value);
         }
 
         /// <summary>

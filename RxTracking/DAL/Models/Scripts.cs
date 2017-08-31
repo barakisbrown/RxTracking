@@ -8,7 +8,6 @@ namespace DAL.Models
     public class Scripts : ObservableObject
     {
         private int _id;
-        private string _doctorName;
         private string _name;
         private string _number;
         private string _type;
@@ -27,18 +26,15 @@ namespace DAL.Models
         [Key]
         public int Id
         {
-            get { return _id; }
-            set { Set(ref _id, value); }
+            get => _id;
+            set => Set(ref _id, value);
         }
 
         /// <summary>
         /// DoctorName that I will fill in later
         /// </summary>
         [NotMapped]
-        public string DoctorName
-        {
-            get { return _doctorName; }
-        }
+        public string DoctorName { get; }
 
         /// <summary>
         /// Name of the Prescription
@@ -47,8 +43,8 @@ namespace DAL.Models
         [Required]
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         /// <summary>
@@ -58,8 +54,8 @@ namespace DAL.Models
         [Required]
         public string Number
         {
-            get { return _number;}
-            set { Set(ref _number, value); }
+            get => _number;
+            set => Set(ref _number, value);
         }
 
         /// <summary>
@@ -69,8 +65,8 @@ namespace DAL.Models
         [Required]
         public string Type
         {
-            get { return _type;}
-            set { Set(ref _type, value); }
+            get => _type;
+            set => Set(ref _type, value);
         }
 
         /// <summary>
@@ -80,8 +76,8 @@ namespace DAL.Models
         [Required]
         public string Noc
         {
-            get { return _noc; }
-            set { Set(ref _noc, value); }
+            get => _noc;
+            set => Set(ref _noc, value);
         }
 
         /// <summary>
@@ -91,8 +87,8 @@ namespace DAL.Models
         [Required]
         public double Qty
         {
-            get { return _qty; }
-            set { Set(ref _qty, value); }
+            get => _qty;
+            set => Set(ref _qty, value);
         }
 
         /// <summary>
@@ -102,8 +98,8 @@ namespace DAL.Models
         [Required]
         public double Days
         {
-            get { return _days; }
-            set { Set(ref _days, value); }
+            get => _days;
+            set => Set(ref _days, value);
         }
 
         /// <summary>
@@ -113,8 +109,8 @@ namespace DAL.Models
         [Required]
         public double MaxRefills
         {
-            get { return _maxRefills;}
-            set { Set(ref _maxRefills, value); }
+            get => _maxRefills;
+            set => Set(ref _maxRefills, value);
         }
 
         /// <summary>
@@ -122,8 +118,8 @@ namespace DAL.Models
         /// </summary>
         public DateTime FilledDate
         {
-            get { return _filledDateTime; }
-            set { Set(ref _filledDateTime, value); }
+            get => _filledDateTime;
+            set => Set(ref _filledDateTime, value);
         }
 
         /// <summary>
@@ -132,8 +128,8 @@ namespace DAL.Models
         [ForeignKey("Doctors")]
         public int DoctorId
         {
-            get { return _doctorId;}
-            set { Set(ref _doctorId, value); }
+            get => _doctorId;
+            set => Set(ref _doctorId, value);
         }
 
         /// <summary>
@@ -142,8 +138,8 @@ namespace DAL.Models
         [ForeignKey("UserInfo")]
         public int ContactId
         {
-            get { return _contactId; }
-            set { Set(ref _contactId, value); }
+            get => _contactId;
+            set => Set(ref _contactId, value);
         }
 
         /// <summary>
@@ -152,8 +148,8 @@ namespace DAL.Models
         [ForeignKey("Orders")]
         public int OrderId
         {
-            get { return _orderId;}
-            set { Set(ref _orderId, value); }
+            get => _orderId;
+            set => Set(ref _orderId, value);
         }
 
         /// <summary>
