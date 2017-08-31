@@ -32,8 +32,8 @@ namespace DAL.Models
         [Key]
         public int Id
         {
-            get { return _id; }
-            set { Set(ref _id, value); }
+            get => _id;
+            set => Set(ref _id, value);
         }
 
         /// <summary>
@@ -42,8 +42,8 @@ namespace DAL.Models
         [Required]
         public string Name
         {
-            get { return _name; }
-            set { Set(ref _name, value); }
+            get => _name;
+            set => Set(ref _name, value);
         }
 
         /// <summary>
@@ -52,8 +52,8 @@ namespace DAL.Models
         [Required, MaxLength(13)]
         public char[] PhoneNumber
         {
-            get { return _phoneNumber; }
-            set { Set(ref _phoneNumber, value); }
+            get => _phoneNumber;
+            set => Set(ref _phoneNumber, value);
         }
 
         /// <summary>
@@ -61,8 +61,8 @@ namespace DAL.Models
         /// </summary>
         public string Notes
         {
-            get { return _notes; }
-            set { Set(ref _notes, value); }
+            get => _notes;
+            set => Set(ref _notes, value);
         }
 
         /// <summary>
@@ -71,8 +71,8 @@ namespace DAL.Models
         [Required]
         public bool Primary
         {
-            get { return _primary; }
-            set { Set(ref _primary, value); }
+            get => _primary;
+            set => Set(ref _primary, value);
         }
 
         /// <summary>
