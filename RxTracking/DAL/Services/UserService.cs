@@ -28,11 +28,10 @@ namespace DAL.Services
         /// <returns>Returns A UserService Class</returns>
         public static UserService GetInstance(DbContext context)
         {
-            if (_padlock is null)
-            {
-                _padlock = new object();
-                _userService = new UserService(context);
-            }
+            if (_padlock != null) return _userService;
+
+            _padlock = new object();
+            _userService = new UserService(context);
 
             return _userService;
         }
@@ -53,7 +52,7 @@ namespace DAL.Services
             // REQUIRED SINCE Logins <=> UserInfo are 1 to 1
             if (newUser.Login == null)
                 throw new NullReferenceException("No login created for this user");
-            else if (newUser.Doctors.Count < 1 || newUser.Doctors == null)
+            if (newUser.Doctors.Count < 1 || newUser.Doctors == null)
                 throw new NullReferenceException("No Doctor Information Stored");
             else
             {
