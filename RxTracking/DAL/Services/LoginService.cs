@@ -28,12 +28,10 @@ namespace DAL.Services
         /// <returns>Returns A LoginService Class</returns>
         public static LoginService GetInstance(DbContext context)
         {
-            if (_padlock is null)
-            {
-                _padlock = new object();
-                _service = new LoginService(context);
-            }
+            if (_padlock != null) return _service;
 
+            _padlock = new object();
+            _service = new LoginService(context);
             return _service;
         }
 
@@ -56,7 +54,7 @@ namespace DAL.Services
         /// <param name="newLogin">The new Login to be added</param>
         public void Add(Logins newLogin)
         {
-            if (newLogin.User is null)
+            if (newLogin.User == null)
                 throw new NullReferenceException("User has not been created yet.");
             _context.Logins.Add(newLogin);
             _context.SaveChanges();
