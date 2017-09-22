@@ -28,10 +28,11 @@ namespace DAL.Services
         /// <returns>Returns A UserService Class</returns>
         public static UserService GetInstance(DbContext context)
         {
-            if (_padlock != null) return _userService;
-
-            _padlock = new object();
-            _userService = new UserService(context);
+            if (_padlock == null)
+            {
+                _padlock = new object();
+                _userService = new UserService(context);
+            }
 
             return _userService;
         }

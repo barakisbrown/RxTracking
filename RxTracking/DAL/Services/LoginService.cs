@@ -28,10 +28,12 @@ namespace DAL.Services
         /// <returns>Returns A LoginService Class</returns>
         public static LoginService GetInstance(DbContext context)
         {
-            if (_padlock != null) return _service;
+            if (_padlock == null)
+            {
+                _padlock = new object();
+                _service = new LoginService(context);
+            }
 
-            _padlock = new object();
-            _service = new LoginService(context);
             return _service;
         }
 
