@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UILayer", "UILayer\UILayer.csproj", "{C6197A92-2B76-4D25-85AB-FA3D23407772}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {10629E25-0B40-42CA-89A7-0C1140BE7C6A}
 	EndGlobalSection
 EndGlobal
