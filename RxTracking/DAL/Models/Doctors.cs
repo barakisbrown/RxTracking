@@ -11,7 +11,7 @@ namespace DAL.Models
     {
         private int _id;
         private string _name;
-        private char[] _phoneNumber;
+        private string _phoneNumber;
         private string _notes;
         private bool _primary;
 
@@ -50,7 +50,7 @@ namespace DAL.Models
         /// PhoneNumber 000-000-0000
         /// </summary>
         [Required, MaxLength(13)]
-        public char[] PhoneNumber
+        public string PhoneNumber
         {
             get => _phoneNumber;
             set => Set(ref _phoneNumber, value);

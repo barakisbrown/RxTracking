@@ -15,16 +15,13 @@
         private string _lastName;
         private string _address;
         private string _city;
-        private char[] _state;
-        private char[] _zipCode;
-        private char[] _phoneNumber;
+        private string _state;
+        private string _zipCode;
+        private string _phoneNumber;
         private string _email;        
 
         public UserInfo()
         {
-            _state = new char[2];
-            _zipCode = new char[10];
-            _phoneNumber = new char[13];
             Orders = new HashSet<Orders>();
             Scripts = new HashSet<Scripts>();
             Doctors = new HashSet<Doctors>();
@@ -72,21 +69,21 @@
         }
 
         [Required, MaxLength(2)]
-        public char[] State
+        public string State
         {
             get => _state;
             set => Set(ref _state, value);
         }
         
         [Required, MaxLength(10)]
-        public char[] ZipCode
+        public string ZipCode
         {
             get => _zipCode;
             set => Set(ref _zipCode, value);
         }
 
         [Required, MaxLength(13)]
-        public char[] PhoneNumber
+        public string PhoneNumber
         {
             get => _phoneNumber;
             set => Set(ref _phoneNumber, value);
