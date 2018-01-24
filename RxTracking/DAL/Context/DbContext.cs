@@ -3,6 +3,7 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using DAL.Models;
 using MySql.Data.Entity;
+using GalaSoft.MvvmLight.Ioc;
 
 namespace DAL.Context
 {
@@ -15,6 +16,7 @@ namespace DAL.Context
         /// <summary>
         /// Created a connection 
         /// </summary>
+        [PreferredConstructor]
         public DbContext() : base("ConnectionString")
         {
 
