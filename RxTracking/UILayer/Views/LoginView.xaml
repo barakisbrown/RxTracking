@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UILayer.Views"
         mc:Ignorable="d"
-        Title="LoginView" Height="300" Width="300"
+        Title="LoginView" Height="300" Width="450"
         DataContext="{Binding LoginViewModel, Source={StaticResource Locator}}">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal">
+            <Label Content="{Binding First}"></Label>
+            <Label Content="{Binding Middle}"></Label>
+            <Label Content="{Binding Last}"></Label>
+        </StackPanel>
     </Grid>
 </Window>

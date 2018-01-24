@@ -51,7 +51,7 @@ namespace UILayer.ViewModel
                         return;
                     }
 
-                    WelcomeTitle = item.Title;
+                    WelcomeTitle = item.First;
                 });
         }
 
