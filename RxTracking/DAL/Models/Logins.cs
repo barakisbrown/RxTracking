@@ -8,7 +8,7 @@ namespace DAL.Models
         private int _id;
         private string _name;
         private byte[] _password;
-
+        private byte[] _hash;
 
         /// <summary>
         /// Primary Key
@@ -39,6 +39,13 @@ namespace DAL.Models
         {
             get => _password;
             set => Set(ref _password, value);
+        }
+        
+        [Required]
+        public byte[] Hash
+        {
+            get => _hash;
+            set => Set(ref _hash, value);
         }
 
         /// <summary>
