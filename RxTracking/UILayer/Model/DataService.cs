@@ -21,13 +21,12 @@ namespace UILayer.Model
                     LastName = "Brown",
                     Address = "123 Test Street",
                     City = "Some City",
-                    State = new char[2],
-                    ZipCode = new char[5],
-                    PhoneNumber = new char[10],
+                    State = "TX",
+                    ZipCode = "78664",
+                    PhoneNumber = "000-000-0000",
                     Email = "example@example.com"
                 };
 
-                
                 var item = new DataItem("Matthew Jason Brown");
                 callback(item, null);
 
