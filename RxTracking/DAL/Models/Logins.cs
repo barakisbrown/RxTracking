@@ -7,7 +7,7 @@ namespace DAL.Models
     {
         private int _id;
         private string _name;
-        private byte[] _password;
+        private byte[] _hash;
         private byte[] _saltValue;
 
         /// <summary>
@@ -35,10 +35,10 @@ namespace DAL.Models
         /// Hashvalue of the password
         /// </summary>
         [Required]
-        public byte[] Password
+        public byte[] Hash
         {
-            get => _password;
-            set => Set(ref _password, value);
+            get => _hash;
+            set => Set(ref _hash, value);
         }
         
         
