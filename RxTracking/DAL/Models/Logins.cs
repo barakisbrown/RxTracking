@@ -41,13 +41,10 @@ namespace DAL.Models
             set => Set(ref _password, value);
         }
         
-        [Required]
-        public byte[] Hash
-        {
-            get => _hash;
-            set => Set(ref _hash, value);
-        }
-
+        
+        /// <summary>
+        /// SaltValue stored of the password
+        /// </summary>
         public byte[] SaltValue
         {
             get => _saltValue;
