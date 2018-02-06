@@ -1,6 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
+using System.ComponentModel.DataAnnotations;
 
 namespace DAL.Models
 {
@@ -13,8 +12,6 @@ namespace DAL.Models
         private int _id;
         // Name of the drug store
         private string _storeName;
-        // Foreign Key
-        private int _orderId;
 
         /// <summary>
         /// Primary Key
@@ -34,16 +31,6 @@ namespace DAL.Models
         {
             get => _storeName;
             set => Set(ref _storeName, value);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        [ForeignKey("Orders")]
-        public int OrderId
-        {
-            get => _orderId;
-            set => Set(ref _orderId, value);
         }
 
         /// <summary>
