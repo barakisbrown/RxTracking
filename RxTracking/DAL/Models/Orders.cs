@@ -1,11 +1,18 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DAL.Models
 {
+    /// <summary>
+    /// This represents a singal Prescription that anyone has puchased at a store.
+    /// Also, an order comprises of the following even they are elsewhere:
+    ///     1. UserInfo
+    ///     2. Doctor Information
+    ///     3. Script
+    /// 
+    /// </summary>
     public class Orders : ObservableObject
     {
         private int _id;
@@ -15,15 +22,7 @@ namespace DAL.Models
         private DateTime _purchaseDateTime;
         private bool _insurance;
         private double _refillsLeft;
-        private int _contactId;
-        private int _storeId;
-
-
-        public Orders()
-        {
-            Stores = new HashSet<Stores>();
-        }
-
+        
         /// <summary>
         /// Primary Key
         /// </summary>
@@ -36,13 +35,15 @@ namespace DAL.Models
 
         /// <summary>
         /// Number of the Script that I will fill in later
+        /// This will be pulled from a list of scripts I have stored
         /// ex. 655727
         /// </summary>
         [NotMapped]
-        public string Number { get {return _number;} }
+        public string Number => _number;
 
         /// <summary>
         /// Name of the scipt that I will fill in later
+        /// This will be pulled from a list of scripts I have stored
         /// ex. Fenobirate
         /// </summary>
         [NotMapped]
@@ -51,7 +52,6 @@ namespace DAL.Models
         /// <summary>
         /// Cost of the script that I purchaed in this order
         /// </summary>
-        [Required]
         public decimal Cost
         {
             get => _cost;
@@ -84,27 +84,7 @@ namespace DAL.Models
             get => _refillsLeft;
             set => Set(ref _refillsLeft, value);
         }
-
-        /// <summary>
-        /// Foreign Key to UsersInfo
-        /// </summary>
-        [ForeignKey("UserInfo")]
-        public int ContactId
-        {
-            get => _contactId;
-            set => Set(ref _contactId, value);
-        }
-
-        /// <summary>
-        /// Foreign Key to Stores
-        /// </summary>
-        [ForeignKey("Stores")]
-        public int StoresId
-        {
-            get => _storeId;
-            set => Set(ref _storeId, value);
-        }
-
+       
         /// <summary>
         /// Navigation Property for UserInfo Table
         /// Configured One to Many between UserInfo and Orders
@@ -114,9 +94,9 @@ namespace DAL.Models
 
         /// <summary>
         /// Navigation Property for Stores Table
-        /// This table have many Stores
+        /// Each order can have 0..1 stores
         /// </summary>
-        public virtual ICollection<Stores> Stores { get; set; }
+        public Stores Store { get; set; }
 
         /// <summary>
         /// Navigation Property for Scripts Table
