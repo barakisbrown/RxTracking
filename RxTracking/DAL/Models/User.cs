@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Collections.Generic;
+using GalaSoft.MvvmLight;
 
 namespace DAL.Models
 {
@@ -17,6 +18,11 @@ namespace DAL.Models
         private string _state;
         private string _zipCode;
         private string _phoneNumber;
+
+        public User()
+        {
+            this.Doctors = new HashSet<Doctor>();
+        }
 
         /// <summary>
         /// Primary Key
@@ -97,7 +103,16 @@ namespace DAL.Models
             set => Set(ref _phoneNumber, value);
         }
 
-        // NAVIGATION PROPERTIES
+        /*    NAVIGATION PROPERTIES       */
+        
+        /// <summary>
+        /// User is a 1..1 to Login
+        /// </summary>
         public virtual Login Login { get; set; }
+
+        /// <summary>
+        /// User 
+        /// </summary>
+        public virtual ICollection<Doctor> Doctors { get; set; }
     }
 }

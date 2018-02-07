@@ -17,6 +17,11 @@ namespace DAL.Models
         private bool _specialist;
         private bool _primary;
 
+        public Doctor()
+        {
+            this.Users = new HashSet<User>();
+        }
+
         // PROPERTIES
         /// <summary>
         /// Primary Key

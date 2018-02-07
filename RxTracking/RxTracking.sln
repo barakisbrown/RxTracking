@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UILayer", "UILayer\UILayer.csproj", "{C6197A92-2B76-4D25-85AB-FA3D23407772}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PasswordDriver", "PasswordDriver\PasswordDriver.csproj", "{E6CEEC2B-A1C0-49A4-9E05-4860EE382C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBDriver", "DBDriver\DBDriver.csproj", "{723676ED-1157-453E-974A-106161CA2CC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,13 +16,15 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA80A2DE-06DC-45A3-8EC8-FE3F4AAC09E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C6197A92-2B76-4D25-85AB-FA3D23407772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CEEC2B-A1C0-49A4-9E05-4860EE382C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CEEC2B-A1C0-49A4-9E05-4860EE382C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CEEC2B-A1C0-49A4-9E05-4860EE382C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{723676ED-1157-453E-974A-106161CA2CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{723676ED-1157-453E-974A-106161CA2CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{723676ED-1157-453E-974A-106161CA2CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{723676ED-1157-453E-974A-106161CA2CC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
