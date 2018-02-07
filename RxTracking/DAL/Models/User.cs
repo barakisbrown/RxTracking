@@ -98,6 +98,6 @@ namespace DAL.Models
         }
 
         // NAVIGATION PROPERTIES
-        public Login Login { get; set; }
+        public virtual Login Login { get; set; }
     }
 }
