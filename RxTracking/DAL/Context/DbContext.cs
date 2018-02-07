@@ -17,7 +17,7 @@ namespace DAL.Context
         /// Created a connection 
         /// </summary>
         [PreferredConstructor]
-        public DbContext() : base("ConnectionString")
+        public DbContext() : base("MyConnectionString")
         {
 
         }
@@ -40,51 +40,33 @@ namespace DAL.Context
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingEntitySetNameConvention>();
-            // One-One Table Configurations
-            // Logins <=> UserInfo
-            modelBuilder.Entity<Logins>()
-                .HasRequired(U => U.User).WithRequiredPrincipal(L => L.Login);
 
-            // Orders to Scripts
-            modelBuilder.Entity<Orders>()
-                .HasRequired<Scripts>(s => s.Script).WithRequiredPrincipal(O => O.Order);
+            // USER ENTITY
+            modelBuilder.Entity<User>().ToTable("Users");
+            modelBuilder.Entity<User>().HasKey(u => u.UserId);
+            modelBuilder.Entity<User>().HasRequired(u => u.FirstName);
+            modelBuilder.Entity<User>().HasRequired(u => u.LastName);
+            modelBuilder.Entity<User>().HasRequired(u => u.Address);
+            modelBuilder.Entity<User>().HasRequired(u => u.City);
+            modelBuilder.Entity<User>().HasRequired(u => u.State);
+            modelBuilder.Entity<User>().HasRequired(u => u.ZipCode);
+            modelBuilder.Entity<User>().HasRequired(u => u.PhoneNumber);
 
-            // One to Many Table Configurations
-            // UserInfo(1) to Orders(M)
-            modelBuilder.Entity<Orders>()
-                .HasRequired<UserInfo>(U => U.User).WithMany(o => o.Orders);
+            // LOGIN ENTITY
+            modelBuilder.Entity<Login>().ToTable("Logins");
+            modelBuilder.Entity<Login>().HasKey(l => l.LoginId);
+            modelBuilder.Entity<Login>().HasRequired(l => l.Name);
+            modelBuilder.Entity<Login>().HasRequired(l => l.Hash);
+            modelBuilder.Entity<Login>().HasRequired(l => l.Salt);
 
-            // UserInfo(1) to Scripts(M)
-            modelBuilder.Entity<Scripts>()
-                .HasRequired<UserInfo>(U => U.User).WithMany(S => S.Scripts);
-            
-            // Orders(1) to Stores(M)
-            modelBuilder.Entity<Stores>()
-                .HasRequired<Orders>(O => O.Order).WithMany(S => S.Stores);
-
-            // Doctors(1) to Scripts(M)
-            modelBuilder.Entity<Scripts>()
-                .HasRequired<Doctors>(D => D.Doctor).WithMany(S => S.Scripts);
-
-            // MANY TO MANY TABLE CONFIGURATIONS
-            modelBuilder.Entity<UserInfo>()
-                .HasMany<Doctors>(D => D.Doctors)
-                .WithMany(U => U.Users)
-                .Map(UD =>
-                {
-                    UD.MapLeftKey("UsersId");
-                    UD.MapRightKey("DoctorId");
-                    UD.ToTable("UsersDoctors");
-                });
-
+            // 1 to 1 RELATIONSHIP
+            modelBuilder.Entity<Login>()
+                .HasRequired(l => l.User)
+                .WithRequiredPrincipal(u => u.Login);
         }
-
-        // TABLES AKA DbSet<>
-        public DbSet<Logins> Logins { get; set; }
-        public DbSet<UserInfo> Users { get; set; }
-        public DbSet<Stores> Stores { get; set; }
-        public DbSet<Doctors> Doctors { get; set; }
-        public DbSet<Orders> Orders { get; set; }
-        public DbSet<Scripts> Scripts { get; set; }
+           
+        // TABLES AKA DbSet      
+        public DbSet<User> Users { get; set; }
+        public DbSet<Login> Login { get; set; }
     }
 }
