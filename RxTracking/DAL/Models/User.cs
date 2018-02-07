@@ -96,5 +96,8 @@ namespace DAL.Models
             get => _phoneNumber;
             set => Set(ref _phoneNumber, value);
         }
+
+        // NAVIGATION PROPERTIES
+        public Login Login { get; set; }
     }
 }
