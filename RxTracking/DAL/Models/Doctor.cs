@@ -9,20 +9,21 @@ namespace DAL.Models
     /// </summary>
     public class Doctor : ObservableObject
     {
-        // BACKING FIELDS
+        #region BACKING FIELDS
         private int _doctorId;
         private string _name;
         private string _phoneNumber;
         private string _notes;
         private bool _specialist;
         private bool _primary;
+        #endregion
 
         public Doctor()
         {
-            this.Users = new HashSet<User>();
+            Users = new HashSet<User>();
         }
 
-        // PROPERTIES
+        #region Properties
         /// <summary>
         /// Primary Key
         /// </summary>
@@ -77,7 +78,21 @@ namespace DAL.Models
             set => Set(ref _primary, value);
         }
 
-        // NAVIGATION PROPERTIES
+        #endregion
+
+        #region NAVIGATION PROPERTIES
+
+        /// <summary>
+        /// A doctor can have many users[Patients]
+        /// </summary>
         public virtual ICollection<User> Users { get; set; }
+
+        /// <summary>
+        /// A doctor can write multiple RxScripts
+        /// </summary>
+        public virtual Script Scripts { get; set; }
+
+        #endregion
+
     }
 }

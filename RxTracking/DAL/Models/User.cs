@@ -8,8 +8,13 @@ namespace DAL.Models
     /// Table Name => User
     /// </summary>
     public class User : ObservableObject
-    {
-        // BACKING FIELDS
+    {        
+        public User()
+        {
+            Doctors = new HashSet<Doctor>();
+        }
+
+        #region BACKING FIELDS
         private int _userId;
         private string _firstName;
         private string _lastName;
@@ -18,12 +23,9 @@ namespace DAL.Models
         private string _state;
         private string _zipCode;
         private string _phoneNumber;
+        #endregion
 
-        public User()
-        {
-            this.Doctors = new HashSet<Doctor>();
-        }
-
+        #region PROPERTIES
         /// <summary>
         /// Primary Key
         /// </summary>
@@ -102,17 +104,24 @@ namespace DAL.Models
             get => _phoneNumber;
             set => Set(ref _phoneNumber, value);
         }
+        #endregion
 
-        /*    NAVIGATION PROPERTIES       */
-        
+        #region NAVIGATION PROPERTIES
         /// <summary>
         /// User is a 1..1 to Login
         /// </summary>
         public virtual Login Login { get; set; }
 
         /// <summary>
-        /// User 
+        /// User can have multiple doctors
         /// </summary>
         public virtual ICollection<Doctor> Doctors { get; set; }
+
+        /// <summary>
+        /// Multiple Scripts
+        /// </summary>
+        public virtual Script Scripts { get; set; }
+
+        #endregion
     }
 }
