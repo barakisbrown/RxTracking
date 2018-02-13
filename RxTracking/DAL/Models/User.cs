@@ -23,6 +23,7 @@ namespace DAL.Models
         private string _state;
         private string _zipCode;
         private string _phoneNumber;
+        private string _email;
         #endregion
 
         #region PROPERTIES
@@ -103,6 +104,15 @@ namespace DAL.Models
         {
             get => _phoneNumber;
             set => Set(ref _phoneNumber, value);
+        }
+
+        /// <summary>
+        /// The user email
+        /// </summary>
+        public string Email
+        {
+            get => _email;
+            set => Set(ref _email, value);
         }
         #endregion
 
