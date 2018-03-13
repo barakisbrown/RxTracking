@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,27 @@ namespace DBDriver
     {
         static void Main(string[] args)
         {
-            var doctor = new Doctors
+            var doctor = new Doctor
             {
                 Name = "Dr. Irvin",
                 PhoneNumber = "5122889244",
                 Primary = true
             };
 
-            var user = new UserInfo
+            var script = new Script
+            {
+                Number = "410448",
+                Name = "Lisinopril",
+                DoseType = "TAB",
+                DoseAmount = "40MG",
+                Ndc = "68180-0517-01",
+                Qty = 30.0,
+                Supply = 30.0,
+                FillDate = new DateTime(2013,1,28),
+                RefillsLeft = 4.0
+            };
+
+            var user = new User
             {
                 FirstName = "Matthew",
                 LastName = "Brown",
@@ -35,17 +49,35 @@ namespace DBDriver
                 Email = "matthew@lokislayer.com"
             };
 
-            // Save the infor to the database
-            user.Login = new Logins {Name = "Barakis"};
-            user.Doctors.Add(doctor);
+            var login = new Login {Name = "Barakis", FirstLogged = DateTime.Now, LastLogged = DateTime.Now};
             // Section is for the password hashing and storage
             byte[] hash;
             byte[] salt;
             PasswordService.SaltedHash("Matthew", out hash, out salt);
-            user.Login.Hash = hash;
-            user.Login.SaltValue = salt;
+            login.Hash = hash;
+            login.Salt = salt;
+            login.User = user;
 
-            var connectionString = "server=lokislayer.com;database=rxstore;uid=BARAKIS;password=BarakisMJB48;";
+            // user
+            user.Scripts = new Collection<Script>();
+            user.Doctors = new Collection<Doctor>();
+            // doctor
+            doctor.Scripts = new Collection<Script>();
+            doctor.Users = new Collection<User>();
+            // scripts
+            script.Users = user;
+            script.Doctors = doctor;
+            // lets add them to the proper collections
+            user.Scripts.Add(script);
+            user.Doctors.Add(doctor);
+            doctor.Scripts.Add(script);
+            doctor.Users.Add(user);
+
+            
+
+
+
+            var connectionString = "server=lokislayer.com;database=rxstore;uid=BARAKIS;password=BarakisMJB48;persistsecurityinfo=True;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -62,6 +94,8 @@ namespace DBDriver
                     {
                         db.Database.UseTransaction(trans);
                         db.Users.Add(user);
+                        db.SaveChanges();
+
                     }
                     trans.Commit();
                 }

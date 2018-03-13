@@ -12,6 +12,7 @@ namespace DAL.Models
         public User()
         {
             Doctors = new HashSet<Doctor>();
+            Scripts = new HashSet<Script>();
         }
 
         #region BACKING FIELDS
@@ -130,7 +131,7 @@ namespace DAL.Models
         /// <summary>
         /// Multiple Scripts
         /// </summary>
-        public virtual Script Scripts { get; set; }
+        public virtual ICollection<Script> Scripts { get; set; }
 
         #endregion
     }

@@ -21,9 +21,6 @@ namespace DAL.Context.Configurations
             Property(d => d.Specialist).IsRequired();
             #endregion
 
-            // 1 TO M SCRIPTS
-            HasRequired<Script>(d => d.Scripts).WithMany(s => s.Doctors).HasForeignKey(d => d.DoctorId);
-
         }
     }
 }

@@ -10,12 +10,6 @@ namespace DAL.Models
     /// </summary>
     public class Script : ObservableObject
     {
-        public Script()
-        {
-            Users = new HashSet<User>();
-            Doctors = new HashSet<Doctor>();
-        }
-
         #region BACKING_FIELDS       
         private int _scriptId;
         private string _rxNumber;
@@ -137,12 +131,12 @@ namespace DAL.Models
         /// <summary>
         /// Each script belongs to 1 Doctor
         /// </summary>
-        public virtual ICollection<Doctor> Doctors { get; set; }
+        public virtual Doctor Doctors { get; set; }
 
         /// <summary>
         /// Each script belong to 1 User
         /// </summary>
-        public virtual ICollection<User> Users { get; set; }
+        public virtual User Users { get; set; }
             
         #endregion
     }

@@ -35,7 +35,7 @@ namespace DAL.Context.Configurations
                 });
 
             // 1 TO M SCRIPTS
-            HasRequired<Script>(s => s.Scripts).WithMany(u => u.Users).HasForeignKey(s => s.UserId);
+
         }
     }
 }

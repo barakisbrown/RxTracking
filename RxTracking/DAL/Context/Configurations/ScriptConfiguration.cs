@@ -25,7 +25,15 @@ namespace DAL.Context.Configurations
             Property(s => s.Supply).IsRequired();
             Property(s => s.RefillsLeft).IsRequired();
             Property(s => s.FillDate).IsRequired();
-            #endregion 
+            #endregion
+
+            /* A user can many scripts */
+            HasRequired<User>(u => u.Users).WithMany(s => s.Scripts).HasForeignKey(u => u.ScriptId)
+                .WillCascadeOnDelete(true);
+
+            /* A Doctor can write many scripts */
+            HasRequired<Doctor>(d => d.Doctors).WithMany(s => s.Scripts).HasForeignKey(d => d.ScriptId)
+                .WillCascadeOnDelete(true);
         }
     }
 }

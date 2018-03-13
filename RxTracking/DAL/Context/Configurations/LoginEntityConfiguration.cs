@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.ModelConfiguration;
 using DAL.Models;
 
 namespace DAL.Context.Configurations
@@ -13,6 +14,7 @@ namespace DAL.Context.Configurations
             ToTable("Logins");
 
             HasKey(l => l.LoginId);
+            Property(l => l.LoginId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
             #region REQUIRED PROPERITES
             Property(l => l.Name).IsRequired();

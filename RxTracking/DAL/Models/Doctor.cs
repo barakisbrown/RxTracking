@@ -21,6 +21,7 @@ namespace DAL.Models
         public Doctor()
         {
             Users = new HashSet<User>();
+            Scripts = new HashSet<Script>();
         }
 
         #region Properties
@@ -90,7 +91,7 @@ namespace DAL.Models
         /// <summary>
         /// A doctor can write multiple RxScripts
         /// </summary>
-        public virtual Script Scripts { get; set; }
+        public virtual ICollection<Script> Scripts { get; set; }
 
         #endregion
 

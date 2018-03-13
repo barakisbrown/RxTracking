@@ -90,6 +90,7 @@
     </Compile>
     <Compile Include="Services\IDataService.cs" />
     <Compile Include="Services\PasswordService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
