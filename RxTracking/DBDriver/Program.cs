@@ -3,8 +3,11 @@ using DAL.Models;
 using DAL.Services;
 using MySql.Data.MySqlClient;
 using System;
+<<<<<<< Updated upstream
 using System.Collections.ObjectModel;
 using System.Linq;
+=======
+>>>>>>> Stashed changes
 
 namespace DBDriver
 {
@@ -15,6 +18,7 @@ namespace DBDriver
 
         static void Main(string[] args)
         {
+<<<<<<< Updated upstream
             // InitializeDB();
 
             if (CheckPassword())
@@ -53,6 +57,8 @@ namespace DBDriver
 
         private static void InitializeDB()
         {
+=======
+>>>>>>> Stashed changes
             var doctor = new Doctor
             {
                 Name = "Dr. Irvin",
@@ -60,6 +66,7 @@ namespace DBDriver
                 Primary = true
             };
 
+<<<<<<< Updated upstream
             var script = new Script
             {
                 Number = "410448",
@@ -73,6 +80,8 @@ namespace DBDriver
                 RefillsLeft = 4.0
             };
 
+=======
+>>>>>>> Stashed changes
             var user = new User
             {
                 FirstName = "Matthew",
@@ -81,15 +90,21 @@ namespace DBDriver
                 City = "Round Rock",
                 State = "TX",
                 ZipCode = "78664",
-                PhoneNumber = "5128289081",
-                Email = "matthew@lokislayer.com"
+                PhoneNumber = "5128289081"
             };
 
+<<<<<<< Updated upstream
             var login = new Login { Name = "Barakis", FirstLogged = DateTime.Now, LastLogged = DateTime.Now };
+=======
+            // Save the infor to the database
+            user.Login = new Login {Name = "Barakis"};
+            user.Doctors.Add(doctor);
+>>>>>>> Stashed changes
             // Section is for the password hashing and storage
             byte[] hash;
             byte[] salt;
             PasswordService.SaltedHash("Matthew", out hash, out salt);
+<<<<<<< Updated upstream
             login.Hash = hash;
             login.Salt = salt;
             login.User = user;
@@ -105,6 +120,12 @@ namespace DBDriver
             user.Doctors.Add(doctor);
             doctor.Scripts.Add(script);
             doctor.Users.Add(user);
+=======
+            user.Login.Hash = hash;
+            user.Login.Salt = salt;
+
+            var connectionString = "server=lokislayer.com;database=rxstore;uid=BARAKIS;password=BarakisMJB48;persistsecurityinfo=True;";
+>>>>>>> Stashed changes
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
