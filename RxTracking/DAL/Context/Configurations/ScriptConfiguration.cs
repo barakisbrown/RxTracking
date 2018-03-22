@@ -28,11 +28,13 @@ namespace DAL.Context.Configurations
             #endregion
 
             /* A user can many scripts */
-            HasRequired<User>(u => u.Users).WithMany(s => s.Scripts).HasForeignKey(u => u.ScriptId)
+            HasRequired(u => u.Users)
+                .WithMany(s => s.Scripts)
+                .HasForeignKey(fk => fk.UserId)
                 .WillCascadeOnDelete(true);
 
             /* A Doctor can write many scripts */
-            HasRequired<Doctor>(d => d.Doctors).WithMany(s => s.Scripts).HasForeignKey(d => d.ScriptId)
+            HasRequired<Doctor>(d => d.Doctors).WithMany(s => s.Scripts).HasForeignKey(d => d.DoctorId)
                 .WillCascadeOnDelete(true);
         }
     }
