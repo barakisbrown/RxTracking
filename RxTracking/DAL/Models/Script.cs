@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Policy;
-using GalaSoft.MvvmLight;
+﻿using GalaSoft.MvvmLight;
+using System;
 
 namespace DAL.Models
 {
