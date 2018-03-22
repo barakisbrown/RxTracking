@@ -1,21 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL.Context;
+﻿using DAL.Context;
 using DAL.Models;
 using DAL.Services;
-using System.Configuration;
-using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace DBDriver
 {
-    class Program
+    
+    public class Program
     {
+        private static string connectionString = "server=lokislayer.com;database=rxstore;uid=BARAKIS;password=BarakisMJB48;persistsecurityinfo=True;";
+
         static void Main(string[] args)
+        {
+            // InitializeDB();
+
+            if (CheckPassword())
+            {
+                Console.WriteLine("Password test passed");
+                Console.ReadKey();
+            }
+            else
+            {
+               Console.WriteLine("Password test failed");
+               Console.ReadKey();
+            }
+
+           
+        }
+
+        private static bool CheckPassword()
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                using (var db = new DbContext(con, false))
+                {
+                    var userName = "Barakis";
+                    var password = "Matthew";
+
+                    var L = db.Login.FirstOrDefault(l => l.Name == userName);
+
+                    string salt = Convert.ToBase64String(L.Salt);
+                    string hash = Convert.ToBase64String(L.Hash);
+
+                    return PasswordService.Verify(salt, hash, password);
+                    
+                }
+            }
+        }
+
+        private static void InitializeDB()
         {
             var doctor = new Doctor
             {
@@ -33,7 +69,7 @@ namespace DBDriver
                 Ndc = "68180-0517-01",
                 Qty = 30.0,
                 Supply = 30.0,
-                FillDate = new DateTime(2013,1,28),
+                FillDate = new DateTime(2013, 1, 28),
                 RefillsLeft = 4.0
             };
 
@@ -49,7 +85,7 @@ namespace DBDriver
                 Email = "matthew@lokislayer.com"
             };
 
-            var login = new Login {Name = "Barakis", FirstLogged = DateTime.Now, LastLogged = DateTime.Now};
+            var login = new Login { Name = "Barakis", FirstLogged = DateTime.Now, LastLogged = DateTime.Now };
             // Section is for the password hashing and storage
             byte[] hash;
             byte[] salt;
@@ -64,28 +100,14 @@ namespace DBDriver
             // doctor
             doctor.Scripts = new Collection<Script>();
             doctor.Users = new Collection<User>();
-            // scripts
-            script.Users = user;
-            script.Doctors = doctor;
             // lets add them to the proper collections
             user.Scripts.Add(script);
             user.Doctors.Add(doctor);
             doctor.Scripts.Add(script);
             doctor.Users.Add(user);
 
-            
-
-
-
-            var connectionString = "server=lokislayer.com;database=rxstore;uid=BARAKIS;password=BarakisMJB48;persistsecurityinfo=True;";
-
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
-                using (var db = new DbContext(connection, false))
-                {
-                    db.Database.CreateIfNotExists();
-                }
-
                 connection.Open();
                 MySqlTransaction trans = connection.BeginTransaction();
                 try
@@ -93,7 +115,7 @@ namespace DBDriver
                     using (var db = new DbContext(connection, false))
                     {
                         db.Database.UseTransaction(trans);
-                        db.Users.Add(user);
+                        db.Login.Add(login);
                         db.SaveChanges();
 
                     }
@@ -105,8 +127,6 @@ namespace DBDriver
                     throw;
                 }
             }
-
-            Console.ReadKey();
-        }      
+        }
     }
 }
