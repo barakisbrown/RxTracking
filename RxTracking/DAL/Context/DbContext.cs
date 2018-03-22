@@ -20,7 +20,7 @@ namespace DAL.Context
         [PreferredConstructor]
         public DbContext() : base("MyConnectionString")
         {
-            Database.SetInitializer<DbContext>(new DropCreateDatabaseAlways<DbContext>());
+             
         }
 
         /// <summary>
@@ -31,7 +31,7 @@ namespace DAL.Context
         public DbContext(DbConnection existingConnection, bool contextOwnConnection)
             : base(existingConnection, contextOwnConnection)
         {
-
+            // Database.SetInitializer(new DropCreateDatabaseAlways<DbContext>());
         }
 
         /// <summary>
