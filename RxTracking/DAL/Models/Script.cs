@@ -124,6 +124,16 @@ namespace DAL.Models
             set => Set(ref _fillDate, value);
         }
 
+        /// <summary>
+        /// Foreign Key for Doctors
+        /// </summary>
+        public int DoctorId { get; set; }
+
+        /// <summary>
+        /// Foreign Key for Users
+        /// </summary>
+        public int UserId { get; set; }
+
         #endregion
 
         #region NAVIGATION PROPERTIES
