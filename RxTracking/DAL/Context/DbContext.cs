@@ -54,5 +54,6 @@ namespace DAL.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Login> Login { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Script> Scripts { get; set; }
     }
 }
