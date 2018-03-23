@@ -17,18 +17,32 @@ namespace DBDriver
         {
             // InitializeDB();
 
-            if (CheckPassword())
-            {
-                Console.WriteLine("Password test passed");
-                Console.ReadKey();
-            }
-            else
-            {
-               Console.WriteLine("Password test failed");
-               Console.ReadKey();
-            }
+            // BEGIN TESTS
+            Console.WriteLine(CheckPassword() ? "Password test passed" : "Password test failed");
+            DisplayScripts();
+            Console.WriteLine("Adding Script Two");
+            AddScriptTwo();
+            Console.WriteLine("Dispalying all scripts");
+            DisplayScripts();
 
-           
+            // ENDING TESTS
+            Console.ReadKey();
+        }
+
+        private static void DisplayScripts()
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                using (var db = new DbContext(conn, false))
+                {
+                    var S = db.Scripts.Take(5);
+
+                    foreach (Script rx in S)
+                    {
+                        Console.WriteLine("RxNumber = {0}    Name = {1}  FillDate = {2}",rx.Number, rx.Number, rx.FillDate);
+                    }
+                }
+            }
         }
 
         private static bool CheckPassword()
@@ -47,6 +61,37 @@ namespace DBDriver
 
                     return PasswordService.Verify(salt, hash, password);
                     
+                }
+            }
+        }
+
+        private static void AddScriptTwo()
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                using (var db = new DbContext(con, false))
+                {
+                    // DOCTOR
+                    var D = db.Doctors.FirstOrDefault(d => d.Name == "Dr. Irvin");
+                    var U = db.Users.FirstOrDefault(u => u.PhoneNumber == "5128289081");
+
+                    var S = new Script()
+                    {
+                        Number = "420627",
+                        Name = "SERTRALINE",
+                        DoseType = "TAB",
+                        DoseAmount = "50MG",
+                        Ndc = "68180-0352-09",
+                        Qty = 30.0,
+                        Supply = 30.0,
+                        FillDate = new DateTime(2013, 3,20),
+                        RefillsLeft = 1.0                        
+                    };
+
+                    S.Users = U;
+                    S.Doctors = D;
+                    db.Scripts.Add(S);
+                    db.SaveChanges();
                 }
             }
         }
