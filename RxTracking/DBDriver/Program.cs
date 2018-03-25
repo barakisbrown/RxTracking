@@ -20,11 +20,12 @@ namespace DBDriver
             // BEGIN TESTS
             Console.WriteLine(CheckPassword() ? "Password test passed" : "Password test failed");
             DisplayScripts();
-            Console.WriteLine("Adding Script Two");
-            AddScriptTwo();
-            Console.WriteLine("Dispalying all scripts");
-            DisplayScripts();
-
+            // Console.WriteLine("Adding Script Two");
+            // AddScriptTwo();
+            // Console.WriteLine("Dispalying all scripts");
+            // DisplayScripts();
+            Console.WriteLine("Adding Dummy Doctor");
+            AddNewDoctor();
             // ENDING TESTS
             Console.ReadKey();
         }
@@ -91,6 +92,26 @@ namespace DBDriver
                     S.Users = U;
                     S.Doctors = D;
                     db.Scripts.Add(S);
+                    db.SaveChanges();
+                }
+            }
+        }
+
+        private static void AddNewDoctor()
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                using (var db = new DbContext(conn, false))
+                {
+                    var D = new Doctor
+                    {
+                        Name = "Random Doctor",
+                        PhoneNumber = "5129999999",
+                        Notes = "This is dummy doctor to test to see if I am able to do an insert",
+                        Primary = false
+                    };
+
+                    db.Doctors.Add(D);
                     db.SaveChanges();
                 }
             }
