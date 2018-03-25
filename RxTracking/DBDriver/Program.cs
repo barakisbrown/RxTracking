@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace DBDriver
 {
-    
+
     public class Program
     {
         private static string connectionString = "server=lokislayer.com;database=rxstore;uid=BARAKIS;password=BarakisMJB48;persistsecurityinfo=True;";
@@ -19,13 +19,19 @@ namespace DBDriver
 
             // BEGIN TESTS
             Console.WriteLine(CheckPassword() ? "Password test passed" : "Password test failed");
+            Console.WriteLine("Dispalying all scripts");
             DisplayScripts();
             // Console.WriteLine("Adding Script Two");
             // AddScriptTwo();
             // Console.WriteLine("Dispalying all scripts");
             // DisplayScripts();
-            Console.WriteLine("Adding Dummy Doctor");
-            AddNewDoctor();
+            // Console.WriteLine("Adding Dummy Doctor");
+            // AddNewDoctor();
+            // AddScriptThreeFrom2ndDoctor();
+            Console.WriteLine("Display scripts from Doctor [Dr. Irvin]");
+            DispalyScriptsFromDoctor("Dr. Irvin");
+            Console.WriteLine("Display scripts from Doctor [Random Doctor]");
+            DispalyScriptsFromDoctor("Random Doctor");
             // ENDING TESTS
             Console.ReadKey();
         }
@@ -113,6 +119,57 @@ namespace DBDriver
 
                     db.Doctors.Add(D);
                     db.SaveChanges();
+                }
+            }
+        }
+
+        private static void AddScriptThreeFrom2ndDoctor()
+        {
+            using (var con = new MySqlConnection(connectionString))
+            {
+                using (var db = new DbContext(con,false))
+                {
+                    var D = db.Doctors.FirstOrDefault(d => d.Name == "Random Doctor");
+                    var U = db.Users.FirstOrDefault(u => u.PhoneNumber == "5128289081");
+
+                    var S = new Script()
+                    {
+                        Number = "420627",
+                        Name = "SERTRALINE",
+                        DoseType = "TAB",
+                        DoseAmount = "50MG",
+                        Ndc = "68180-0352-09",
+                        Qty = 30.0,
+                        Supply = 30.0,
+                        FillDate = new DateTime(2013, 3, 20),
+                        RefillsLeft = 1.0
+                    };
+
+                    // TIE SCRIPT TO Doctor who ordered and the user who it belongs too
+                    S.Doctors = D;
+                    S.Users = U;
+
+                    // Add to table and save the table
+                    db.Scripts.Add(S);
+                    db.SaveChanges();
+
+                }
+            }
+        }
+
+        private static void DispalyScriptsFromDoctor(string name)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                using (var db = new DbContext(conn, false))
+                {
+                    var D = db.Doctors.FirstOrDefault(d => d.Name == name);
+                    var S = db.Scripts.Take(5).Where(s => s.DoctorId == D.DoctorId);
+
+                    foreach (Script rx in S)
+                    {
+                        Console.WriteLine("RxNumber = {0}    Name = {1}  FillDate = {2}", rx.Number, rx.Number, rx.FillDate);
+                    }
                 }
             }
         }
