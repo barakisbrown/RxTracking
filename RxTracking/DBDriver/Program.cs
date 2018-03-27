@@ -32,6 +32,8 @@ namespace DBDriver
             DispalyScriptsFromDoctor("Dr. Irvin");
             Console.WriteLine("Display scripts from Doctor [Random Doctor]");
             DispalyScriptsFromDoctor("Random Doctor");
+            // Use the new function[TestScriptService]
+            TestScriptService();
             // ENDING TESTS
             Console.ReadKey();
         }
@@ -173,6 +175,18 @@ namespace DBDriver
                 }
             }
         }
+
+        private static void TestScriptService()
+        {
+            ScriptService _service = ScriptService.GetInstance();
+            Console.WriteLine("Number of Entrties in this table is =: {0}", _service.Count());
+            // ITERATE THROUGH SCRIPT DB
+            foreach (Script rx in _service.GetAll())
+            {
+                Console.WriteLine("RxNumber = {0}    Name = {1}  FillDate = {2}    RxId = {3}", rx.Number, rx.Number, rx.FillDate, rx.ScriptId);
+            }
+        }
+
 
         private static void InitializeDB()
         {
