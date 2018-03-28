@@ -27,12 +27,14 @@ namespace DBDriver
             // DisplayScripts();
             // Console.WriteLine("Adding Dummy Doctor");
             // AddNewDoctor();
-            // AddScriptThreeFrom2ndDoctor();
+            Console.WriteLine("Adding a dummy script for the dummy doctor");
+            AddScriptThreeFrom2ndDoctor();
             Console.WriteLine("Display scripts from Doctor [Dr. Irvin]");
             DispalyScriptsFromDoctor("Dr. Irvin");
             Console.WriteLine("Display scripts from Doctor [Random Doctor]");
             DispalyScriptsFromDoctor("Random Doctor");
             // Use the new function[TestScriptService]
+            Console.WriteLine("Testing Script Services Capabilities");
             TestScriptService();
             // ENDING TESTS
             Console.ReadKey();
@@ -136,8 +138,8 @@ namespace DBDriver
 
                     var S = new Script()
                     {
-                        Number = "420627",
-                        Name = "SERTRALINE",
+                        Number = "999999",
+                        Name = "DELETE ME",
                         DoseType = "TAB",
                         DoseAmount = "50MG",
                         Ndc = "68180-0352-09",
@@ -152,9 +154,8 @@ namespace DBDriver
                     S.Users = U;
 
                     // Add to table and save the table
-                    db.Scripts.Add(S);
-                    db.SaveChanges();
-
+                    ScriptService _service = ScriptService.GetInstance();
+                    _service.Add(S);
                 }
             }
         }
@@ -185,6 +186,25 @@ namespace DBDriver
             {
                 Console.WriteLine("RxNumber = {0}    Name = {1}  FillDate = {2}    RxId = {3}", rx.Number, rx.Number, rx.FillDate, rx.ScriptId);
             }
+
+            // TESTING REMOVING OF A SCRIPT
+            var script = _service.Get(7);
+            if (script == null)
+            {
+                Console.WriteLine("Error : ID does not exist in the collection .. leaving function");
+            }
+            else
+            {
+                Console.WriteLine("Removing script with id#4 from the database. Was it successful though? {0}", _service.Remove(script));
+                // If it was successful then the count should drop by 1
+                Console.WriteLine("Number of Entrties in this table is =: {0}", _service.Count());
+                // Iterate again to display the resuls in the database
+                foreach (Script rx in _service.GetAll())
+                {
+                    Console.WriteLine("RxNumber = {0}    Name = {1}  FillDate = {2}    RxId = {3}", rx.Number, rx.Number, rx.FillDate, rx.ScriptId);
+                } 
+            }
+
         }
 
 
