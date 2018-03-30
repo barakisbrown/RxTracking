@@ -28,11 +28,7 @@ namespace DAL.Services
 
         public bool Add(Login login)
         {
-            if (login.User == null)
-                throw new NullReferenceException("User has not been created yet");
-            _context.Login.Add(login);
-            var changes = _context.SaveChanges();
-            return changes > 0;
+            throw new NotImplementedException();
         }
     }
 }
