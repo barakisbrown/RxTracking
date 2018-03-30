@@ -7,7 +7,7 @@ namespace DAL.Services
         ObservableCollection<T> GetAll();
         T Get(int id);
         void Add(T newValue);
-        int Count();
+        int Count { get; }
         bool Remove(T t);
     }
 }
