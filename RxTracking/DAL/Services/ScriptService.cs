@@ -17,14 +17,7 @@ namespace DAL.Services
 
         private ScriptService()
         {
-            using (var conn = new MySqlConnection(ConnectionString))
-            {
-                using (var db = new DAL.Context.DbContext(conn,false))
-                {
-                    db.Scripts.Load();
-                    _collection = db.Scripts.Local;
-                }
-            }
+            LoadCollection();
         }
 
         /// <summary>
@@ -45,7 +38,7 @@ namespace DAL.Services
         /// <summary>
         /// Simply reloads the internal collection. Only used when a delete is called.
         /// </summary>
-        private void ReloadCollection()
+        private void LoadCollection()
         {
             using (var conn = new MySqlConnection(ConnectionString))
             {
@@ -164,7 +157,7 @@ namespace DAL.Services
                     // Was the deletion successful?
                     var result = db.SaveChanges();
                     // Lets update the local collection
-                    ReloadCollection();
+                    LoadCollection();
                     // Return the result weather it was deleted correctly or not
                     // Result should be non zero
                     return result > 0;
