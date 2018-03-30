@@ -106,10 +106,7 @@ namespace DAL.Services
         /// Gets number of rows in the table
         /// </summary>
         /// <returns>Number of rows</returns>
-        public int Count()
-        {
-            return _collection.Count;
-        }
+        public int Count => _collection.Count;
 
         /// <summary>
         /// Searches the collection for the id. If exist then returns the whole script otherwise returns null
