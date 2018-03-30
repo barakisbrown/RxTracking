@@ -94,8 +94,8 @@ namespace DAL.Services
             {
                 using (var db = new DAL.Context.DbContext(conn, false))
                 {
-                    if ((newScript.Doctors == null) || (newScript.Users == null))
-                        throw new NullReferenceException("Either doctors or users is Null");
+                    if (newScript.Doctors == null) throw new NullReferenceException("Currently Script has 0 doctor. Please add one");
+                    if (newScript.Users == null) throw new NullReferenceException("Currently Script has 0 user. Please Add one");
                     db.Scripts.Add(newScript);
                     db.SaveChanges();
                 }
