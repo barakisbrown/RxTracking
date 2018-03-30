@@ -103,9 +103,9 @@ namespace DAL.Services
         }
 
         /// <summary>
-        /// Gets number of rows in the table
+        /// Gets number of scripts
         /// </summary>
-        /// <returns>Number of rows</returns>
+        /// <returns>Number of scripts</returns>
         public int Count => _collection.Count;
 
         /// <summary>
