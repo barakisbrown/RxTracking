@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DbContext.cs" />
+    <Compile Include="ILogin.cs" />
     <Compile Include="Models\Orders.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\Logins.cs" />
