@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using DAL.Context;
+using DAL;
 using DAL.Models;
 
 namespace DAL.Services
 {
     public class LoginService : IDataService<Logins>
     {
-        private readonly DbContext _context;
+        private readonly MyDbContext _context;
         private static LoginService _service;
         private static object _padlock = null;
 
@@ -16,7 +16,7 @@ namespace DAL.Services
         /// Assign internal context to one passed to this class
         /// </summary>
         /// <param name="context">DbContext passed to this class</param>
-        private LoginService(DbContext context)
+        private LoginService(MyDbContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace DAL.Services
         /// </summary>
         /// <param name="context">Context created by DbContext Class</param>
         /// <returns>Returns A LoginService Class</returns>
-        public static LoginService GetInstance(DbContext context)
+        public static LoginService GetInstance(MyDbContext context)
         {
             if (_padlock == null)
             {

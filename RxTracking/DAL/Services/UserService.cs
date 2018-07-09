@@ -2,13 +2,13 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using DbContext = DAL.Context.DbContext;
+using DAL;
 
 namespace DAL.Services
 {
     public class UserService : IDataService<UserInfo>
     {
-        private readonly DbContext _context;
+        private readonly MyDbContext _context;
         private static UserService _userService;
         private static object _padlock = null;
 
@@ -16,7 +16,7 @@ namespace DAL.Services
         /// Assign internal context to one passed to this class
         /// </summary>
         /// <param name="context"></param>
-        private UserService(DbContext context)
+        private UserService(MyDbContext context)
         {
             _context = context;
         }
@@ -26,7 +26,7 @@ namespace DAL.Services
         /// </summary>
         /// <param name="context">Context created by DbContext Class</param>
         /// <returns>Returns A UserService Class</returns>
-        public static UserService GetInstance(DbContext context)
+        public static UserService GetInstance(MyDbContext context)
         {
             if (_padlock == null)
             {
