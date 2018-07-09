@@ -3,23 +3,15 @@ using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using DAL.Models;
 using MySql.Data.Entity;
-using GalaSoft.MvvmLight.Ioc;
 
-namespace DAL.Context
+namespace DAL
 {
-    /// <summary>
-    /// My Context for the DAL part of RxTracking
-    /// </summary>
-    [DbConfigurationType(typeof(MySqlEFConfiguration))]
-    public class DbContext : System.Data.Entity.DbContext
+    [DbConfigurationType(typeof(MySqlEFConfiguration))] 
+    public class MyDbContext : DbContext
     {
-        /// <summary>
-        /// Created a connection 
-        /// </summary>
-        [PreferredConstructor]
-        public DbContext() : base("ConnectionString")
+        public MyDbContext() : base("ConnectionString")
         {
-
+            
         }
 
         /// <summary>
@@ -27,7 +19,7 @@ namespace DAL.Context
         /// </summary>
         /// <param name="existingConnection"></param>
         /// <param name="contextOwnConnection"></param>
-        public DbContext(DbConnection existingConnection, bool contextOwnConnection)
+        public MyDbContext(DbConnection existingConnection, bool contextOwnConnection)
             : base(existingConnection, contextOwnConnection)
         {
 
@@ -57,7 +49,7 @@ namespace DAL.Context
             // UserInfo(1) to Scripts(M)
             modelBuilder.Entity<Scripts>()
                 .HasRequired<UserInfo>(U => U.User).WithMany(S => S.Scripts);
-            
+
             // Orders(1) to Stores(M)
             modelBuilder.Entity<Stores>()
                 .HasRequired<Orders>(O => O.Order).WithMany(S => S.Stores);
